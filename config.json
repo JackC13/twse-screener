@@ -1,0 +1,62 @@
+{
+  "short": {
+    "top": 10,
+    "rankBy": "volRatio",
+    "rules": {
+      "minPrice": 10,
+      "minAvgValue": 50000000,
+      "closeAboveMA": 20,
+      "ma5AboveMa20": true,
+      "minVolRatio": 1.5,
+      "rsiMin": 50,
+      "rsiMax": 70,
+      "instBuyDays": 3
+    }
+  },
+  "mid": {
+    "top": 10,
+    "rankBy": "revCumYoY",
+    "rules": {
+      "minPrice": 10,
+      "minAvgValue": 30000000,
+      "closeAboveMA": 60,
+      "peMin": 0,
+      "peMax": 15,
+      "yieldMin": 4,
+      "pbMax": 2,
+      "revYoYMin": 10,
+      "revCumYoYMin": 0
+    }
+  },
+  "paper": {
+    "short": {
+      "perTrade": 100000,
+      "buyTopN": 3,
+      "maxPositions": 10,
+      "takeProfit": 8,
+      "stopLoss": -5,
+      "maxHoldDays": 10
+    },
+    "mid": {
+      "perTrade": 100000,
+      "buyTopN": 2,
+      "maxPositions": 10,
+      "takeProfit": null,
+      "stopLoss": -15,
+      "maxHoldDays": 60
+    },
+    "feeRate": 0.001425,
+    "minFee": 20,
+    "taxRate": 0.003,
+    "benchmark": "0050"
+  },
+  "data": {
+    "historyDays": 120,
+    "backfillDays": 70,
+    "requestDelayMs": 3500
+  },
+  "notify": {
+    "line": true,
+    "listSize": 5
+  }
+}

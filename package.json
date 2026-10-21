@@ -1,0 +1,12 @@
+{
+  "name": "twse-screener",
+  "private": true,
+  "type": "module",
+  "description": "台股上市股票每日篩選（短期／中期）與模擬交易",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node src/main.js run",
+    "diagnose": "node src/main.js diagnose",
+    "test": "node --test test/*.test.js"
+  }
+}

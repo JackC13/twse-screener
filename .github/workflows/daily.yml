@@ -1,0 +1,55 @@
+name: 每日台股篩選
+
+on:
+  schedule:
+    - cron: "30 9 * * 1-5"   # 台北時間 17:30（週一到週五）；GitHub 排程可能延遲幾十分鐘
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "run = 正式執行；diagnose = 只測試資料來源"
+        required: true
+        default: run
+        type: choice
+        options: [run, diagnose]
+      date:
+        description: "指定日期 YYYY-MM-DD（留空 = 今天）"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: screener
+  cancel-in-progress: false
+
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 執行
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_TO: ${{ secrets.LINE_TO }}
+          TODAY: ${{ inputs.date }}
+        run: node src/main.js ${{ inputs.mode || 'run' }}
+
+      - name: 儲存資料與報表
+        if: ${{ (inputs.mode || 'run') == 'run' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data reports
+          if git diff --cached --quiet; then
+            echo "沒有變更"
+          else
+            git commit -m "data: $(TZ=Asia/Taipei date +%F)"
+            git push
+          fi
