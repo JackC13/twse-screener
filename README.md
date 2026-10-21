@@ -5,15 +5,14 @@
 1. 抓證交所的收盤行情、三大法人買賣超、本益比／殖利率／淨值比、上市公司月營收
 2. 依 `config.json` 的條件，分別篩出**短期**與**中期**清單（只看上市一般股，不含 ETF）
 3. 用篩選結果做**模擬買賣**，扣除手續費與證交稅，並和 0050 比較
-4. 把報表存到 [`reports/latest.md`](reports/latest.md)，摘要推播到 LINE
+4. 更新網頁 dashboard（GitHub Pages，手機可看）
 
 > 本工具只整理公開資料與模擬結果，不構成投資建議。進出場由你自己判斷。
 
 ## 第一次設定
 
-1. **Settings → Secrets and variables → Actions → New repository secret**，新增兩個：
-   - `LINE_CHANNEL_ACCESS_TOKEN`：LINE 官方帳號的 Channel access token（可以跟看診小幫手共用）
-   - `LINE_TO`：要收推播的對象，你的 LINE user ID（`U` 開頭）
+1. **Settings → Pages**：Source 選 **Deploy from a branch**，Branch 選 `main`、資料夾選 `/docs`，按 Save。
+   幾分鐘後網址會是 `https://<你的帳號>.github.io/twse-screener/`，用手機加到主畫面就像一個 app。
 2. **Actions → 每日台股篩選 → Run workflow**：
    - 先選 `diagnose`，確認每個資料來源都是 ✅
    - 再選 `run`。第一次會回補約 70 個交易日的歷史，大約要 6–8 分鐘
@@ -82,13 +81,14 @@
 | --- | --- |
 | `data/history/` | 每日收盤行情與法人買賣超，保留最近 120 個交易日 |
 | `data/paper.json` | 模擬交易的持股、待買與已出場紀錄 |
-| `reports/YYYY-MM-DD.md` | 每日報表；`reports/latest.md` 是最新一份 |
+| `docs/index.html` | 網頁 dashboard |
+| `docs/data.json` | dashboard 讀的資料，每天更新 |
 
 ## 本機執行
 
 ```bash
 node src/main.js diagnose   # 測試資料來源
-node src/main.js run        # 完整執行（沒設定 LINE 環境變數時只印出推播內容）
+node src/main.js run        # 完整執行
 npm test                    # 單元測試
 ```
 

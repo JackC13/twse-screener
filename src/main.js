@@ -1,15 +1,14 @@
 // 進入點：node src/main.js run | diagnose
-//   run       抓今天的資料 → 回補歷史 → 篩選 → 模擬交易 → 報表 → LINE 推播
+//   run       抓今天的資料 → 回補歷史 → 篩選 → 模擬交易 → 輸出 docs/data.json 給網頁 dashboard
 //   diagnose  只測試各資料來源能不能抓到，不寫入任何檔案
-// 環境變數：TODAY=YYYY-MM-DD（指定日期，測試用）、LINE_CHANNEL_ACCESS_TOKEN、LINE_TO、GITHUB_REPOSITORY
+// 環境變數：TODAY=YYYY-MM-DD（指定日期，測試用）
 
 import * as twse from "./twse.js";
 import * as store from "./store.js";
 import { computeMetrics } from "./indicators.js";
 import { screen } from "./screen.js";
 import { newState, step, summarize } from "./paper.js";
-import { markdown, lineText } from "./report.js";
-import { pushLine } from "./line.js";
+import { buildDashboard } from "./dashboard.js";
 
 export const taipeiToday = () => new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10);
 
@@ -106,7 +105,7 @@ async function backfillInst(cfg, notes) {
   }
 }
 
-export async function run({ date = process.env.TODAY || taipeiToday(), notify = true } = {}) {
+export async function run({ date = process.env.TODAY || taipeiToday() } = {}) {
   const cfg = store.loadConfig();
   const notes = [];
   const keep = keepCode(cfg);
@@ -151,13 +150,12 @@ export async function run({ date = process.env.TODAY || taipeiToday(), notify = 
   const result = screen(cfg, metrics, names, valuation, revenue);
   log(`短期符合 ${result.counts.short} 檔、中期符合 ${result.counts.mid} 檔`);
 
-  let perf = null, events = [], rerun = false;
+  let perf = null, events = [];
   const byDate = Object.fromEntries(days.map((d) => [d.date, d.p]));
   const today = byDate[date];
   const state = store.loadPaper() ?? newState();
   if (dates.length >= 60) {
     if (state.lastDate === date) {
-      rerun = true;
       events = state.lastEvents ?? [];
     } else {
       // 漏掉的交易日：只處理成交與出場（沒有當天的估值資料，不產生新訊號）
@@ -174,23 +172,12 @@ export async function run({ date = process.env.TODAY || taipeiToday(), notify = 
     notes.push("模擬交易會在歷史資料滿 60 天後開始");
   }
 
-  const md = markdown({ date, result, cfg, perf, events, notes });
-  store.saveReport(date, md);
-
-  const repo = process.env.GITHUB_REPOSITORY;
-  const reportUrl = repo ? `https://github.com/${repo}/blob/main/reports/${date}.md` : null;
-  if (notify && cfg.notify?.line !== false && state.notifiedDate !== date) {
-    try {
-      await pushLine(lineText({ date, result, perf, cfg, reportUrl, notes }));
-      state.notifiedDate = date;
-    } catch (e) {
-      log(e.message);
-      notes.push(e.message);
-    }
-  } else if (rerun) {
-    log("今天已經推播過，不重複推播");
+  if (perf) {
+    state.equity = (state.equity ?? []).filter((e) => e.date !== date);
+    state.equity.push({ date, short: perf.short.returnPct, mid: perf.mid.returnPct, bench: perf.benchmark?.returnPct ?? null });
+    store.savePaper(state);
   }
-  if (dates.length >= 60 || state.notifiedDate) store.savePaper(state);
+  store.saveDashboard(buildDashboard({ date, result, cfg, perf, equity: state.equity ?? [], events, notes, historyDays: dates.length }));
   return { result, perf, notes, events };
 }
 

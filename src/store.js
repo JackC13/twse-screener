@@ -2,6 +2,7 @@
 //   data/history/YYYY-MM-DD.json   { date, p: { code: [開, 高, 低, 收, 成交股數, 成交金額] }, inst: { code: 法人買賣超股數 } | null }
 //   data/names.json                { code: 名稱 }
 //   data/paper.json                模擬交易狀態
+//   docs/data.json                 網頁 dashboard 的資料
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync, unlinkSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -42,12 +43,8 @@ export const saveNames = (names) => writeJson(join(ROOT, "data", "names.json"), 
 export const loadPaper = () => readJson(join(ROOT, "data", "paper.json"), null);
 export const savePaper = (state) => writeJson(join(ROOT, "data", "paper.json"), state, true);
 
-export function saveReport(date, markdown) {
-  const dir = join(ROOT, "reports");
-  mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, `${date}.md`), markdown);
-  writeFileSync(join(dir, "latest.md"), markdown);
-}
+/** 網頁 dashboard 讀的資料（GitHub Pages 從 docs/ 發布） */
+export const saveDashboard = (data) => writeJson(join(ROOT, "docs", "data.json"), data);
 
 /** 只保留最近 keep 個交易日 */
 export function prune(keep) {

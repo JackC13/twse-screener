@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>台股篩選</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3f5f6;
+    --surface: #ffffff;
+    --ink: #1c2430;
+    --muted: #66717e;
+    --line: #dde2e6;
+    --brand: #23577a;
+    --up: #d42c3e;     /* 台股慣例：紅漲 */
+    --down: #17855a;   /* 綠跌 */
+    --warn-bg: #fff6e0;
+    --warn-ink: #7a5600;
+    --chart-mid: #23577a;
+    --chart-short: #c07a1c;
+    --chart-bench: #9aa4ae;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #13171c;
+      --surface: #1b2027;
+      --ink: #e7ebef;
+      --muted: #97a2ad;
+      --line: #2c333c;
+      --brand: #7db3d8;
+      --up: #ff6b78;
+      --down: #4cc490;
+      --warn-bg: #3a2f12;
+      --warn-ink: #f2d38a;
+      --chart-mid: #7db3d8;
+      --chart-short: #e5a64f;
+      --chart-bench: #6c7682;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 "Noto Sans TC", system-ui, -apple-system, "PingFang TC", sans-serif;
+    font-variant-numeric: tabular-nums;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px calc(32px + env(safe-area-inset-bottom)); }
+
+  header { padding: 28px 0 12px; }
+  header h1 { margin: 0; font-size: 1.5rem; font-weight: 700; letter-spacing: .02em; }
+  header p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+
+  .notes { background: var(--warn-bg); color: var(--warn-ink); border-radius: 10px; padding: 10px 14px; margin: 8px 0 4px; font-size: .9rem; }
+  .notes ul { margin: 0; padding-left: 1.1em; }
+
+  nav { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 12px 0; }
+  .tabs { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 4px; gap: 4px; }
+  .tabs button {
+    font: inherit; font-weight: 500; color: var(--muted); background: none; border: 0; border-radius: 9px;
+    padding: 8px 4px; cursor: pointer; display: flex; gap: 6px; justify-content: center; align-items: baseline;
+  }
+  .tabs button[aria-selected="true"] { background: var(--brand); color: var(--surface); }
+  .tabs .n { font-size: .8rem; opacity: .85; }
+  .tabs button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+  section[hidden] { display: none; }
+  .lead { color: var(--muted); font-size: .9rem; margin: 4px 2px 12px; }
+
+  .list { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .row { display: block; padding: 12px 16px; border-top: 1px solid var(--line); color: inherit; text-decoration: none; }
+  .row:first-child { border-top: 0; }
+  .row:hover { background: color-mix(in srgb, var(--brand) 5%, transparent); }
+  .row .top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .row .id { font-weight: 700; }
+  .row .id small { font-weight: 400; color: var(--muted); margin-left: 6px; font-size: .85rem; }
+  .row .price { font-weight: 700; font-size: 1.05rem; }
+  .facts { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 4px; font-size: .85rem; color: var(--muted); }
+  .facts b { color: var(--ink); font-weight: 500; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .empty { padding: 28px 16px; text-align: center; color: var(--muted); }
+
+  details.rules { margin: 14px 2px 0; font-size: .9rem; color: var(--muted); }
+  details.rules summary { cursor: pointer; color: var(--brand); }
+  details.rules ul { margin: 8px 0; padding-left: 1.2em; }
+  details.rules a { color: var(--brand); }
+
+  .books { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .book { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .book h3 { margin: 0; font-size: .95rem; font-weight: 500; color: var(--muted); }
+  .book .ret { font-size: 2.1rem; font-weight: 700; line-height: 1.2; margin: 4px 0 2px; }
+  .book .money { font-size: .9rem; }
+  .book dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 10px 0 0; font-size: .85rem; }
+  .book dt { color: var(--muted); }
+  .book dd { margin: 0; text-align: right; }
+  .bench { margin: 10px 2px 0; font-size: .9rem; color: var(--muted); }
+
+  .chart { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 12px 8px; margin-top: 10px; }
+  .chart h3 { margin: 0 4px 6px; font-size: .95rem; font-weight: 500; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: .8rem; color: var(--muted); margin: 0 4px 4px; }
+  .legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 5px; }
+  .chart svg { width: 100%; height: auto; display: block; }
+  .chart text { font-size: 20px; fill: var(--muted); }
+
+  h2 { font-size: 1.05rem; margin: 26px 2px 8px; }
+  .meta { font-size: .8rem; color: var(--muted); }
+  footer { margin-top: 32px; font-size: .8rem; color: var(--muted); line-height: 1.7; }
+  footer a { color: var(--muted); }
+  @media (max-width: 380px) { .books { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>台股篩選</h1>
+    <p id="updated">讀取中…</p>
+  </header>
+  <div id="notes"></div>
+
+  <nav>
+    <div class="tabs" role="tablist" aria-label="切換清單">
+      <button role="tab" id="tab-short" aria-controls="short" aria-selected="true">短期<span class="n" id="n-short"></span></button>
+      <button role="tab" id="tab-mid" aria-controls="mid" aria-selected="false">中期<span class="n" id="n-mid"></span></button>
+      <button role="tab" id="tab-paper" aria-controls="paper" aria-selected="false">模擬績效</button>
+    </div>
+  </nav>
+
+  <section id="short" role="tabpanel" aria-labelledby="tab-short"></section>
+  <section id="mid" role="tabpanel" aria-labelledby="tab-mid" hidden></section>
+  <section id="paper" role="tabpanel" aria-labelledby="tab-paper" hidden></section>
+
+  <footer>
+    資料來源：臺灣證券交易所。每個交易日收盤後更新。<br>
+    這裡只整理公開資料和模擬結果，不是投資建議。模擬交易沒有動用真的錢。
+  </footer>
+</div>
+
+<script>
+const REPO_EDIT = (() => {
+  // GitHub Pages 網址 https://<user>.github.io/<repo>/ → 編輯 config.json 的連結
+  const m = location.hostname.match(/^([^.]+)\.github\.io$/);
+  const repo = location.pathname.split("/").filter(Boolean)[0];
+  return m && repo ? `https://github.com/${m[1]}/${repo}/edit/main/config.json` : null;
+})();
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const ok = (x) => x !== null && x !== undefined && Number.isFinite(x);
+const fx = (x, d = 2) => (ok(x) ? x.toFixed(d) : "—");
+const signCls = (x) => (ok(x) && x > 0 ? "up" : ok(x) && x < 0 ? "down" : "");
+const pct = (x) => (ok(x) ? `${x > 0 ? "+" : ""}${x.toFixed(2)}%` : "—");
+const money = (x) => (ok(x) ? `${x > 0 ? "+" : ""}${Math.round(x).toLocaleString("zh-TW")}` : "—");
+const yi = (x) => (ok(x) ? `${(x / 1e8).toFixed(1)} 億` : "—");
+const quote = (code) => `https://tw.stock.yahoo.com/quote/${encodeURIComponent(code)}.TW`;
+const md = (d) => (d ? `${Number(d.slice(5, 7))}/${Number(d.slice(8, 10))}` : "");
+
+const RULE_TEXT = {
+  minPrice: (v) => `股價至少 ${v} 元`,
+  minAvgValue: (v) => `近 20 日平均成交金額至少 ${(v / 1e8).toFixed(1)} 億`,
+  closeAboveMA: (v) => `收盤價站上 ${v} 日均線`,
+  ma5AboveMa20: () => `5 日均線在 20 日均線之上`,
+  minVolRatio: (v) => `今天成交量至少是前 20 日均量的 ${v} 倍`,
+  rsiMin: (v) => `RSI(14) 至少 ${v}`,
+  rsiMax: (v) => `RSI(14) 不超過 ${v}`,
+  instBuyDays: (v) => `三大法人連續買超至少 ${v} 天`,
+  peMin: (v) => `本益比大於 ${v}`,
+  peMax: (v) => `本益比不超過 ${v}`,
+  yieldMin: (v) => `殖利率至少 ${v}%`,
+  pbMax: (v) => `股價淨值比不超過 ${v}`,
+  revYoYMin: (v) => `最新月營收年增至少 ${v}%`,
+  revCumYoYMin: (v) => `今年累計營收年增至少 ${v}%`,
+};
+const RANK_TEXT = { volRatio: "量比", rsi14: "RSI", ret20: "20 日漲跌", instNet3: "近 3 日法人買超", avgValue20: "成交金額", revCumYoY: "累計營收年增", revYoY: "月營收年增", yield: "殖利率", pe: "本益比", pb: "淨值比" };
+const rankText = (r) => (r?.startsWith("-") ? `${RANK_TEXT[r.slice(1)] ?? r.slice(1)}由低到高` : `${RANK_TEXT[r] ?? r}由高到低`);
+
+function rulesBlock(book) {
+  const items = Object.entries(book.rules).filter(([, v]) => v !== null && v !== false)
+    .map(([k, v]) => `<li>${esc(RULE_TEXT[k] ? RULE_TEXT[k](v) : `${k} = ${v}`)}</li>`).join("");
+  const edit = REPO_EDIT ? `<a href="${REPO_EDIT}" target="_blank" rel="noopener">在 GitHub 修改條件</a>` : "修改 repo 裡的 config.json";
+  return `<details class="rules"><summary>篩選條件</summary><ul>${items}</ul>依${esc(rankText(book.rankBy))}排序。${edit}</details>`;
+}
+
+function shortRow(r) {
+  return `<a class="row" href="${quote(r.code)}" target="_blank" rel="noopener">
+    <div class="top"><span class="id">${esc(r.code)}<small>${esc(r.name)}</small></span><span class="price">${fx(r.close)}</span></div>
+    <div class="facts">
+      <span>量比 <b>${fx(r.volRatio, 1)} 倍</b></span>
+      <span>RSI <b>${fx(r.rsi14, 0)}</b></span>
+      <span>法人連買 <b>${r.instDays ?? "—"} 天</b></span>
+      <span>20 日 <b class="${signCls(r.ret20)}">${pct(r.ret20)}</b></span>
+      <span>日均成交 <b>${yi(r.avgValue20)}</b></span>
+    </div></a>`;
+}
+function midRow(r) {
+  return `<a class="row" href="${quote(r.code)}" target="_blank" rel="noopener">
+    <div class="top"><span class="id">${esc(r.code)}<small>${esc(r.name)}</small></span><span class="price">${fx(r.close)}</span></div>
+    <div class="facts">
+      <span>本益比 <b>${fx(r.pe, 1)}</b></span>
+      <span>殖利率 <b>${fx(r.yield)}%</b></span>
+      <span>淨值比 <b>${fx(r.pb)}</b></span>
+      <span>月營收年增 <b class="${signCls(r.revYoY)}">${pct(r.revYoY)}</b></span>
+      <span>累計年增 <b class="${signCls(r.revCumYoY)}">${pct(r.revCumYoY)}</b></span>
+      ${r.revMonth ? `<span>${esc(r.revMonth)} 營收</span>` : ""}
+    </div></a>`;
+}
+
+function listSection(book, rowFn, label) {
+  const lead = book.count > book.rows.length
+    ? `今天有 ${book.count} 檔符合${label}條件，列出前 ${book.rows.length} 檔。點一下看走勢。`
+    : `今天有 ${book.count} 檔符合${label}條件。${book.count ? "點一下看走勢。" : ""}`;
+  const rows = book.rows.length ? book.rows.map(rowFn).join("") : `<div class="empty">今天沒有符合條件的股票。可以放寬下面的條件再看看。</div>`;
+  return `<p class="lead">${lead}</p><div class="list">${rows}</div>${rulesBlock(book)}`;
+}
+
+function chart(equity) {
+  if (!equity || equity.length < 2) return `<div class="chart"><h3>報酬走勢</h3><p class="meta" style="margin:4px">累積兩個交易日以上就會畫出走勢。</p></div>`;
+  const W = 640, H = 260, L = 62, R = 14, T = 14, B = 34;
+  const keys = [["mid", "var(--chart-mid)", "中期"], ["short", "var(--chart-short)", "短期"], ["bench", "var(--chart-bench)", "0050"]];
+  const vals = equity.flatMap((e) => keys.map(([k]) => e[k]).filter(ok));
+  let lo = Math.min(0, ...vals), hi = Math.max(0, ...vals);
+  if (hi - lo < 1) { hi += 0.5; lo -= 0.5; }
+  const pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
+  const x = (i) => L + (i / (equity.length - 1)) * (W - L - R);
+  const y = (v) => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+  const raw = (hi - lo) / 4, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const step = [1, 2, 5, 10].map((k) => k * mag).find((s) => s >= raw);
+  const ticks = [];
+  for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) ticks.push(v);
+  const grid = ticks.map((v) => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" ${Math.abs(v) < 1e-9 ? 'stroke-width="1.5"' : ""}/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${(Math.abs(v) < 1e-9 ? 0 : v).toFixed(step < 1 ? 1 : 0)}%</text>`).join("");
+  const lines = keys.map(([k, c]) => {
+    const pts = equity.map((e, i) => (ok(e[k]) ? `${x(i).toFixed(1)},${y(e[k]).toFixed(1)}` : null)).filter(Boolean);
+    return pts.length > 1 ? `<polyline points="${pts.join(" ")}" fill="none" stroke="${c}" stroke-width="${k === "bench" ? 1.5 : 2.2}" stroke-linejoin="round" ${k === "bench" ? 'stroke-dasharray="4 3"' : ""}/>` : "";
+  }).join("");
+  const xl = `<text x="${L}" y="${H - 6}">${md(equity[0].date)}</text><text x="${W - R}" y="${H - 6}" text-anchor="end">${md(equity.at(-1).date)}</text>`;
+  const legend = keys.map(([, c, n]) => `<span><i style="background:${c}"></i>${n}</span>`).join("");
+  return `<div class="chart"><h3>報酬走勢</h3><div class="legend">${legend}</div><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="中期、短期模擬與 0050 的累積報酬">${grid}${lines}${xl}</svg></div>`;
+}
+
+function bookCard(name, b, params) {
+  return `<div class="book">
+    <h3>${name}</h3>
+    <div class="ret ${signCls(b.returnPct)}">${pct(b.returnPct)}</div>
+    <div class="money ${signCls(b.total)}">${money(b.total)} 元</div>
+    <dl>
+      <dt>交易筆數</dt><dd>${b.trades}</dd>
+      <dt>勝率</dt><dd>${b.winRate === null ? "—" : `${b.winRate}%`}</dd>
+      <dt>平均每筆</dt><dd class="${signCls(b.avgPnlPct)}">${pct(b.avgPnlPct)}</dd>
+      <dt>持股</dt><dd>${b.open.length} / ${params.maxPositions}</dd>
+    </dl></div>`;
+}
+
+function positions(name, b, p) {
+  const rule = [p.takeProfit != null ? `停利 ${p.takeProfit}%` : null, p.stopLoss != null ? `停損 ${p.stopLoss}%` : null, p.maxHoldDays ? `最多持有 ${p.maxHoldDays} 天` : null].filter(Boolean).join("，");
+  const open = b.open.length
+    ? b.open.map((t) => `<a class="row" href="${quote(t.code)}" target="_blank" rel="noopener">
+        <div class="top"><span class="id">${esc(t.code)}<small>${esc(t.name)}</small></span><span class="price ${signCls(t.pnlPct)}">${pct(t.pnlPct)}</span></div>
+        <div class="facts"><span>${md(t.buyDate)} 買進 <b>${fx(t.buyPrice)}</b></span><span>現在 <b>${fx(t.close)}</b></span><span>${t.shares.toLocaleString("zh-TW")} 股</span><span class="${signCls(t.pnl)}">${money(t.pnl)} 元</span></div></a>`).join("")
+    : `<div class="empty">目前沒有持股。</div>`;
+  const pending = b.pending.length ? `<p class="lead" style="margin-top:8px">下個交易日開盤買進：${b.pending.map((x) => `${esc(x.code)} ${esc(x.name)}`).join("、")}</p>` : "";
+  const recent = b.recent.length
+    ? `<h2>${name}最近出場</h2><div class="list">${b.recent.map((t) => `<a class="row" href="${quote(t.code)}" target="_blank" rel="noopener">
+        <div class="top"><span class="id">${esc(t.code)}<small>${esc(t.name)}</small></span><span class="price ${signCls(t.pnlPct)}">${pct(t.pnlPct)}</span></div>
+        <div class="facts"><span>${esc(t.reason)}</span><span>${md(t.buyDate)} ${fx(t.buyPrice)} → ${md(t.sellDate)} ${fx(t.sellPrice)}</span><span>${t.heldDays} 天</span><span class="${signCls(t.pnl)}">${money(t.pnl)} 元</span></div></a>`).join("")}</div>`
+    : "";
+  return `<h2>${name}持股</h2><p class="meta" style="margin:-4px 2px 8px">每筆 ${p.perTrade.toLocaleString("zh-TW")} 元，${rule}</p><div class="list">${open}</div>${pending}${recent}`;
+}
+
+function paperSection(p) {
+  if (!p) return `<div class="list"><div class="empty">模擬交易會在歷史資料滿 60 個交易日後開始。</div></div>`;
+  const bench = p.benchmark ? `<p class="bench">同期 ${esc(p.benchmark.code)} 買進持有：<b class="${signCls(p.benchmark.returnPct)}">${pct(p.benchmark.returnPct)}</b></p>` : "";
+  return `<p class="lead">從 ${esc(p.startDate)} 開始模擬。報酬率是總損益除以本金（每筆金額乘持股上限），已扣手續費和證交稅。</p>
+    <div class="books">${bookCard("短期", p.short, p.params.short)}${bookCard("中期", p.mid, p.params.mid)}</div>
+    ${bench}${chart(p.equity)}
+    ${positions("短期", p.short, p.params.short)}
+    ${positions("中期", p.mid, p.params.mid)}`;
+}
+
+function eventsBlock(events) {
+  if (!events?.length) return "";
+  const NAME = { short: "短期", mid: "中期" };
+  const li = events.map((e) => {
+    const what = e.type === "buy" ? `買進 ${e.shares.toLocaleString("zh-TW")} 股，${fx(e.price)} 元`
+      : e.type === "sell" ? `賣出 ${fx(e.price)} 元（${esc(e.reason)}，<span class="${signCls(e.pnl)}">${money(e.pnl)} 元</span>）`
+      : `沒買到（${esc(e.reason)}）`;
+    return `<li>${e.date ? `${md(e.date)} ` : ""}${NAME[e.book]}｜${esc(e.code)} ${esc(e.name)}：${what}</li>`;
+  }).join("");
+  return `<h2>這次的模擬交易</h2><div class="list" style="padding:10px 16px"><ul style="margin:0;padding-left:1.1em;font-size:.9rem">${li}</ul></div>`;
+}
+
+function select(id) {
+  for (const t of ["short", "mid", "paper"]) {
+    const on = t === id;
+    $(`#tab-${t}`).setAttribute("aria-selected", on);
+    $(`#${t}`).hidden = !on;
+  }
+  try { localStorage.setItem("tab", id); } catch {}
+}
+for (const t of ["short", "mid", "paper"]) $(`#tab-${t}`).addEventListener("click", () => select(t));
+
+fetch(`data.json?t=${Date.now()}`)
+  .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+  .then((d) => {
+    const when = new Date(d.generatedAt).toLocaleString("zh-TW", { timeZone: "Asia/Taipei", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+    $("#updated").textContent = `${d.date} 收盤資料，${when} 更新`;
+    if (d.notes?.length) $("#notes").innerHTML = `<div class="notes"><ul>${d.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`;
+    $("#n-short").textContent = d.short.count;
+    $("#n-mid").textContent = d.mid.count;
+    $("#short").innerHTML = listSection(d.short, shortRow, "短期");
+    $("#mid").innerHTML = listSection(d.mid, midRow, "中期");
+    $("#paper").innerHTML = paperSection(d.paper) + eventsBlock(d.events);
+    let tab = "short";
+    try { tab = localStorage.getItem("tab") || "short"; } catch {}
+    select(["short", "mid", "paper"].includes(tab) ? tab : "short");
+  })
+  .catch((e) => {
+    $("#updated").textContent = "還沒有資料";
+    $("#short").innerHTML = `<div class="list"><div class="empty">讀不到 data.json（${esc(e.message)}）。第一次執行 GitHub Actions 的「每日台股篩選」完成後就會出現。</div></div>`;
+  });
+</script>
+</body>
+</html>

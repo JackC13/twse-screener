@@ -54,9 +54,5 @@
     "historyDays": 120,
     "backfillDays": 70,
     "requestDelayMs": 3500
-  },
-  "notify": {
-    "line": true,
-    "listSize": 5
   }
 }

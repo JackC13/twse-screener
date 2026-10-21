@@ -40,17 +40,13 @@ globalThis.fetch = async (url, opts) => {
   else if (u.pathname.endsWith("/T86")) body = t86(u.searchParams.get("date"));
   else if (u.pathname.endsWith("/BWIBBU_ALL")) body = [{ Code: "2330", PEratio: "12", DividendYield: "5", PBratio: "1.8" }, { Code: "1101", PEratio: "30", DividendYield: "2", PBratio: "1" }];
   else if (u.pathname.endsWith("/t187ap05_L")) body = [{ 資料年月: "11509", 公司代號: "2330", "營業收入-去年同月增減(%)": "20", "累計營業收入-前期比較增減(%)": "15" }];
-  else if (u.hostname === "api.line.me") { calls.push(["LINE", JSON.parse(opts.body)]); body = {}; }
   else throw new Error(`unexpected ${url}`);
   return new Response(JSON.stringify(body), { status: 200 });
 };
 
 const { run } = await import("../src/main.js");
 
-test("第一次執行：回補歷史、篩選、開始模擬、推播", async () => {
-  process.env.LINE_CHANNEL_ACCESS_TOKEN = "t";
-  process.env.LINE_TO = "U1";
-  process.env.GITHUB_REPOSITORY = "me/twse-screener";
+test("第一次執行：回補歷史、篩選、開始模擬、輸出 dashboard", async () => {
   const out = await run({ date: "2026-10-20" });
 
   const hist = readdirSync(join(root, "data", "history"));
@@ -62,20 +58,21 @@ test("第一次執行：回補歷史、篩選、開始模擬、推播", async ()
 
   assert.deepEqual(out.result.short.map((x) => x.code), [], "上漲太穩 RSI=100 過熱，短期不入選");
   assert.deepEqual(out.result.mid.map((x) => x.code), ["2330"]);
-  assert.ok(existsSync(join(root, "reports", "latest.md")));
+  const dash = JSON.parse(readFileSync(join(root, "docs", "data.json"), "utf8"));
+  assert.equal(dash.date, "2026-10-20");
+  assert.deepEqual(dash.mid.rows.map((x) => x.code), ["2330"]);
+  assert.equal(dash.mid.rows[0].revMonth, "2026/09");
+  assert.equal(dash.paper.startDate, "2026-10-20");
+  assert.equal(dash.paper.equity.length, 1);
   const paper = JSON.parse(readFileSync(join(root, "data", "paper.json"), "utf8"));
   assert.equal(paper.startDate, "2026-10-20");
   assert.deepEqual(paper.books.mid.pending.map((x) => x.code), ["2330"]);
 
-  const line = calls.find((c) => Array.isArray(c) && c[0] === "LINE");
-  assert.ok(line, "有推播");
-  assert.match(line[1].messages[0].text, /中期（1）：2330 台積電/);
-  assert.match(line[1].messages[0].text, /github\.com\/me\/twse-screener\/blob\/main\/reports\/2026-10-20\.md/);
 });
 
 test("隔天：不再回補，模擬買進", async () => {
   calls.length = 0;
-  const out = await run({ date: "2026-10-21", notify: false });
+  const out = await run({ date: "2026-10-21" });
   assert.equal(calls.filter((c) => typeof c === "string" && c.includes("MI_INDEX")).length, 1, "只抓今天");
   assert.equal(out.perf.mid.open.length, 1);
   assert.equal(out.perf.mid.open[0].code, "2330");
@@ -84,24 +81,22 @@ test("隔天：不再回補，模擬買進", async () => {
 test("非交易日：直接結束、不寫檔", async () => {
   holidays.add("20261022");
   globalThis.fetch = ((orig) => async (url, o) => (url.includes("STOCK_DAY_ALL") ? new Response("[]") : orig(url, o)))(globalThis.fetch);
-  const out = await run({ date: "2026-10-22", notify: false });
+  const out = await run({ date: "2026-10-22" });
   assert.equal(out.skipped, true);
   assert.ok(!existsSync(join(root, "data", "history", "2026-10-22.json")));
 });
 
-test("同一天重跑：不重複推播，報表保留原本的交易紀錄", async () => {
+test("同一天重跑：dashboard 保留原本的交易紀錄，績效曲線不重複", async () => {
   holidays.delete("20261022");
-  calls.length = 0;
-  process.env.LINE_CHANNEL_ACCESS_TOKEN = "t";
   const first = await run({ date: "2026-10-23" });
-  const pushes1 = calls.filter((c) => Array.isArray(c)).length;
   const again = await run({ date: "2026-10-23" });
-  assert.equal(calls.filter((c) => Array.isArray(c)).length, pushes1, "沒有第二次推播");
   assert.deepEqual(again.events, first.events);
+  const dash = JSON.parse(readFileSync(join(root, "docs", "data.json"), "utf8"));
+  assert.equal(dash.paper.equity.filter((e) => e.date === "2026-10-23").length, 1);
 });
 
 test("漏跑的交易日會補上，模擬交易也會補跑", async () => {
-  const out = await run({ date: "2026-10-27", notify: false }); // 10/26 沒跑
+  const out = await run({ date: "2026-10-27" }); // 10/26 沒跑
   const hist = readdirSync(join(root, "data", "history"));
   assert.ok(hist.includes("2026-10-26.json"), "補上 10/26");
   const paper = JSON.parse(readFileSync(join(root, "data", "paper.json"), "utf8"));
@@ -109,14 +104,6 @@ test("漏跑的交易日會補上，模擬交易也會補跑", async () => {
 });
 
 test("不能執行比最新資料更早的日期", async () => {
-  await assert.rejects(run({ date: "2026-10-21", notify: false }), /只能執行最新的交易日/);
+  await assert.rejects(run({ date: "2026-10-21" }), /只能執行最新的交易日/);
 });
 
-test("LINE 推播失敗不會讓整個執行失敗", async () => {
-  const orig = globalThis.fetch;
-  globalThis.fetch = async (url, o) => (String(url).includes("api.line.me") ? new Response("bad", { status: 401 }) : orig(url, o));
-  const out = await run({ date: "2026-10-28" });
-  globalThis.fetch = orig;
-  assert.ok(out.notes.some((n) => n.includes("LINE 推播失敗")));
-  assert.ok(existsSync(join(root, "reports", "2026-10-28.md")));
-});

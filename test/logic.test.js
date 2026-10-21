@@ -4,7 +4,7 @@ import { num, rocToIso, parseMiIndex, parseT86, parseValuation, parseRevenue, pa
 import { sma, rsi, computeMetrics } from "../src/indicators.js";
 import { shortRules, midRules, screen } from "../src/screen.js";
 import { newState, step, summarize, buyCost, sellProceeds } from "../src/paper.js";
-import { markdown, lineText } from "../src/report.js";
+import { buildDashboard, rocMonth } from "../src/dashboard.js";
 import { prevWeekday } from "../src/main.js";
 
 const cfg = JSON.parse((await import("node:fs")).readFileSync(new URL("../config.json", import.meta.url), "utf8"));
@@ -205,20 +205,24 @@ test("模擬：已持有的不重複買、持股上限", () => {
   assert.equal(s.books.short.pending.length, 0, "已持有的不再排入");
 });
 
-// ── 報表 ──
-test("報表與 LINE 文字", () => {
+// ── dashboard 資料 ──
+test("dashboard 資料", () => {
   const result = screen(cfg, { 2330: goodShort }, { 2330: "台積電" });
   const s = newState();
   step(s, cfg, "2026-10-20", { 2330: P(100, 100), "0050": P(50, 50) }, ["2026-10-20"], result);
   const perf = summarize(s, cfg, { 2330: P(100, 100), "0050": P(50, 50) });
-  const md = markdown({ date: "2026-10-20", result, cfg, perf, events: [], notes: ["測試"] });
-  assert.match(md, /\| 2330 \| 台積電 \|/);
-  assert.match(md, /明天開盤買進：2330 台積電/);
-  assert.match(md, /不構成投資建議/);
-  const t = lineText({ date: "2026-10-20", result, perf, cfg, reportUrl: "https://x" });
-  assert.match(t, /📈 台股篩選 10\/20/);
-  assert.match(t, /短期（1）：2330 台積電/);
-  assert.match(t, /0050 0\.00%/);
+  const d = buildDashboard({ date: "2026-10-20", result, cfg, perf, equity: [{ date: "2026-10-20", short: 0, mid: 0, bench: 0 }], events: [], notes: ["測試"], historyDays: 70 });
+  assert.equal(d.short.count, 1);
+  assert.deepEqual(Object.keys(d.short.rows[0]).sort(), ["avgValue20", "close", "code", "instDays", "ma20", "name", "ret20", "rsi14", "volRatio"]);
+  assert.deepEqual(d.paper.short.pending, [{ code: "2330", name: "台積電" }]);
+  assert.equal(d.paper.benchmark.returnPct, 0);
+  assert.equal(d.paper.equity.length, 1);
+  assert.ok(JSON.stringify(d).length < 20000);
+  assert.equal(buildDashboard({ date: "x", result, cfg, perf: null, equity: [], events: [], notes: [], historyDays: 10 }).paper, null);
+});
+test("民國年月", () => {
+  assert.equal(rocMonth("11509"), "2026/09");
+  assert.equal(rocMonth(null), null);
 });
 test("前一個平日", () => {
   assert.equal(prevWeekday("2026-10-19"), "2026-10-16");
