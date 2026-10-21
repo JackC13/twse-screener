@@ -1,0 +1,56 @@
+{
+  "startDate": "2026-10-21",
+  "lastDate": "2026-10-21",
+  "benchmark": {
+    "code": "0050",
+    "startClose": 108.15
+  },
+  "books": {
+    "short": {
+      "positions": [],
+      "pending": [
+        {
+          "code": "6491",
+          "name": "晶碩",
+          "signalDate": "2026-10-21"
+        },
+        {
+          "code": "2324",
+          "name": "仁寶",
+          "signalDate": "2026-10-21"
+        },
+        {
+          "code": "2356",
+          "name": "英業達",
+          "signalDate": "2026-10-21"
+        }
+      ],
+      "closed": []
+    },
+    "mid": {
+      "positions": [],
+      "pending": [
+        {
+          "code": "2347",
+          "name": "聯強",
+          "signalDate": "2026-10-21"
+        },
+        {
+          "code": "2897",
+          "name": "王道銀行",
+          "signalDate": "2026-10-21"
+        }
+      ],
+      "closed": []
+    }
+  },
+  "lastEvents": [],
+  "equity": [
+    {
+      "date": "2026-10-21",
+      "short": 0,
+      "mid": 0,
+      "bench": 0
+    }
+  ]
+}
