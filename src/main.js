@@ -183,12 +183,20 @@ export async function run({ date = process.env.TODAY || taipeiToday() } = {}) {
 
 export async function diagnose() {
   const date = process.env.TODAY || taipeiToday();
+  // 在 GitHub Actions 上同時輸出成 annotation，方便在執行結果頁面直接看到
+  const gh = process.env.GITHUB_ACTIONS === "true";
+  const say = (level, msg) => {
+    console.log(msg);
+    if (gh) console.log(`::${level} title=diagnose::${msg.replace(/%/g, "%25").replace(/\r?\n/g, "%0A")}`);
+  };
+  let failed = 0;
   const tryIt = async (label, fn, show) => {
     try {
       const v = await fn();
-      console.log(`✅ ${label}：${show(v)}`);
+      say("notice", `✅ ${label}：${show(v)}`.slice(0, 900));
     } catch (e) {
-      console.log(`❌ ${label}：${e.message}`);
+      failed++;
+      say("error", `❌ ${label}：${e.message}`.slice(0, 900));
     }
     await twse.sleep(3000);
   };
@@ -199,13 +207,14 @@ export async function diagnose() {
     d = prevWeekday(d);
     await twse.sleep(3000);
   }
-  console.log(`測試日期 ${d}`);
+  say("notice", `測試日期 ${d}`);
   const count = (o) => (o ? `${Object.keys(o).length} 筆，例：${JSON.stringify(Object.entries(o).find(([c]) => c === "2330") ?? Object.entries(o)[0])}` : "沒有資料");
   await tryIt("MI_INDEX 每日收盤行情", () => twse.fetchMiIndex(d), count);
   await tryIt("T86 三大法人", () => twse.fetchT86(d), count);
   await tryIt("STOCK_DAY_ALL", () => twse.fetchStockDayAll(), (v) => `日期 ${v?.date}，${count(v?.prices)}`);
   await tryIt("BWIBBU_ALL 本益比", () => twse.fetchValuation(), count);
   await tryIt("t187ap05_L 月營收", () => twse.fetchRevenue(), count);
+  if (failed) process.exitCode = 1;
 }
 
 const mode = process.argv[2];
