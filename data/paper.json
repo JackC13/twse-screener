@@ -7,40 +7,65 @@
   },
   "books": {
     "short": {
-      "positions": [],
-      "pending": [
+      "positions": [
         {
           "code": "6491",
           "name": "晶碩",
-          "signalDate": "2026-10-21"
+          "signalDate": "2026-10-21",
+          "buyDate": "2026-10-22",
+          "buyPrice": 430,
+          "shares": 232,
+          "cost": 99902,
+          "source": "realtime"
         },
         {
           "code": "2324",
           "name": "仁寶",
-          "signalDate": "2026-10-21"
+          "signalDate": "2026-10-21",
+          "buyDate": "2026-10-22",
+          "buyPrice": 38,
+          "shares": 2631,
+          "cost": 100120,
+          "source": "realtime"
         },
         {
           "code": "2356",
           "name": "英業達",
-          "signalDate": "2026-10-21"
+          "signalDate": "2026-10-21",
+          "buyDate": "2026-10-22",
+          "buyPrice": 61.3,
+          "shares": 1631,
+          "cost": 100122.29999999999,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": []
     },
     "mid": {
-      "positions": [],
-      "pending": [
+      "positions": [
         {
           "code": "2347",
           "name": "聯強",
-          "signalDate": "2026-10-21"
+          "signalDate": "2026-10-21",
+          "buyDate": "2026-10-22",
+          "buyPrice": 99.5,
+          "shares": 1005,
+          "cost": 100139.5,
+          "source": "realtime"
         },
         {
           "code": "2897",
           "name": "王道銀行",
-          "signalDate": "2026-10-21"
+          "signalDate": "2026-10-21",
+          "buyDate": "2026-10-22",
+          "buyPrice": 10.9,
+          "shares": 9174,
+          "cost": 100138.6,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": []
     }
   },
@@ -52,5 +77,55 @@
       "mid": 0,
       "bench": 0
     }
-  ]
+  ],
+  "openEvents": {
+    "date": "2026-10-22",
+    "events": [
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "6491",
+        "name": "晶碩",
+        "price": 430,
+        "shares": 232,
+        "date": "2026-10-22"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "2324",
+        "name": "仁寶",
+        "price": 38,
+        "shares": 2631,
+        "date": "2026-10-22"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "2356",
+        "name": "英業達",
+        "price": 61.3,
+        "shares": 1631,
+        "date": "2026-10-22"
+      },
+      {
+        "book": "mid",
+        "type": "buy",
+        "code": "2347",
+        "name": "聯強",
+        "price": 99.5,
+        "shares": 1005,
+        "date": "2026-10-22"
+      },
+      {
+        "book": "mid",
+        "type": "buy",
+        "code": "2897",
+        "name": "王道銀行",
+        "price": 10.9,
+        "shares": 9174,
+        "date": "2026-10-22"
+      }
+    ]
+  }
 }
