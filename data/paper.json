@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-10-21",
+  "lastDate": "2026-10-22",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -16,7 +16,7 @@
           "buyPrice": 430,
           "shares": 232,
           "cost": 99902,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "2324",
@@ -26,7 +26,7 @@
           "buyPrice": 38,
           "shares": 2631,
           "cost": 100120,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "2356",
@@ -36,10 +36,26 @@
           "buyPrice": 61.3,
           "shares": 1631,
           "cost": 100122.29999999999,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "6112",
+          "name": "邁達特",
+          "signalDate": "2026-10-22"
+        },
+        {
+          "code": "1101",
+          "name": "台泥",
+          "signalDate": "2026-10-22"
+        },
+        {
+          "code": "6695",
+          "name": "芯鼎",
+          "signalDate": "2026-10-22"
+        }
+      ],
       "closed": []
     },
     "mid": {
@@ -52,7 +68,7 @@
           "buyPrice": 99.5,
           "shares": 1005,
           "cost": 100139.5,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "2897",
@@ -62,20 +78,83 @@
           "buyPrice": 10.9,
           "shares": 9174,
           "cost": 100138.6,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "2607",
+          "name": "榮運",
+          "signalDate": "2026-10-22"
+        },
+        {
+          "code": "2520",
+          "name": "冠德",
+          "signalDate": "2026-10-22"
+        }
+      ],
       "closed": []
     }
   },
-  "lastEvents": [],
+  "lastEvents": [
+    {
+      "book": "short",
+      "type": "buy",
+      "code": "6491",
+      "name": "晶碩",
+      "price": 430,
+      "shares": 232,
+      "date": "2026-10-22"
+    },
+    {
+      "book": "short",
+      "type": "buy",
+      "code": "2324",
+      "name": "仁寶",
+      "price": 38,
+      "shares": 2631,
+      "date": "2026-10-22"
+    },
+    {
+      "book": "short",
+      "type": "buy",
+      "code": "2356",
+      "name": "英業達",
+      "price": 61.3,
+      "shares": 1631,
+      "date": "2026-10-22"
+    },
+    {
+      "book": "mid",
+      "type": "buy",
+      "code": "2347",
+      "name": "聯強",
+      "price": 99.5,
+      "shares": 1005,
+      "date": "2026-10-22"
+    },
+    {
+      "book": "mid",
+      "type": "buy",
+      "code": "2897",
+      "name": "王道銀行",
+      "price": 10.9,
+      "shares": 9174,
+      "date": "2026-10-22"
+    }
+  ],
   "equity": [
     {
       "date": "2026-10-21",
       "short": 0,
       "mid": 0,
       "bench": 0
+    },
+    {
+      "date": "2026-10-22",
+      "short": -0.65,
+      "mid": -0.14,
+      "bench": -1.16
     }
   ],
   "openEvents": {
