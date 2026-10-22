@@ -154,3 +154,34 @@ export const fetchStockDayAll = async () => parseStockDayAll(await getJson(`${OP
 export const fetchValuation = async () => parseValuation(await getJson(`${OPENAPI}/exchangeReport/BWIBBU_ALL`));
 export const fetchRevenue = async () => parseRevenue(await getJson(`${OPENAPI}/opendata/t187ap05_L`));
 export { sleep };
+
+// ───────────── 盤中即時報價（早上用開盤價模擬成交） ─────────────
+// mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_2330.tw|tse_2317.tw&json=1&delay=0
+// 回傳 msgArray：c 代號、n 名稱、o 開盤、y 昨收、z 最新成交、d 日期 YYYYMMDD；還沒成交的欄位是 "-"
+
+/** → { code: { name, open, prevClose, last, date } } */
+export function parseRealtime(json) {
+  const out = {};
+  for (const r of json?.msgArray ?? []) {
+    const code = String(r.c ?? "").trim();
+    if (!code) continue;
+    const d = String(r.d ?? "");
+    out[code] = {
+      name: String(r.n ?? "").trim(),
+      open: num(r.o), prevClose: num(r.y), last: num(r.z),
+      date: /^\d{8}$/.test(d) ? `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}` : null,
+    };
+  }
+  return out;
+}
+
+export async function fetchRealtime(codes) {
+  if (!codes.length) return {};
+  const out = {};
+  for (let i = 0; i < codes.length; i += 20) {
+    const ex = codes.slice(i, i + 20).map((c) => `tse_${c}.tw`).join("|");
+    Object.assign(out, parseRealtime(await getJson(`https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=${encodeURIComponent(ex)}&json=1&delay=0&_=${Date.now()}`)));
+    if (i + 20 < codes.length) await sleep(2000);
+  }
+  return out;
+}

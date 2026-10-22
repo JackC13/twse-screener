@@ -20,22 +20,28 @@ const trade = (t) => ({
   pnl: Math.round(t.pnl ?? 0), pnlPct: r2(t.pnlPct ?? null), reason: t.reason ?? null, heldDays: t.heldDays ?? null,
 });
 
+/** 模擬交易區塊（收盤後與早上開盤更新共用） */
+export function paperBlock(perf, cfg, equity) {
+  if (!perf) return null;
+  const book = (b) => ({
+    capital: perf[b].capital, total: Math.round(perf[b].total), realized: Math.round(perf[b].realized),
+    unrealized: Math.round(perf[b].unrealized), returnPct: perf[b].returnPct, trades: perf[b].trades,
+    winRate: perf[b].winRate, avgPnlPct: perf[b].avgPnlPct,
+    open: perf[b].open.map(trade), pending: perf[b].pending.map((p) => ({ code: p.code, name: p.name })),
+    recent: perf[b].recent.map(trade),
+  });
+  return { startDate: perf.startDate, benchmark: perf.benchmark, short: book("short"), mid: book("mid"), params: cfg.paper, equity };
+}
+
+export const eventsBlock = (events) =>
+  (events ?? []).map((e) => ({ ...e, price: r2(e.price ?? null), pnl: e.pnl === undefined ? undefined : Math.round(e.pnl) }));
+
 export function buildDashboard({ date, result, cfg, perf, equity, events, notes, historyDays, generatedAt = new Date().toISOString() }) {
-  const book = (b) =>
-    perf && {
-      capital: perf[b].capital, total: Math.round(perf[b].total), realized: Math.round(perf[b].realized),
-      unrealized: Math.round(perf[b].unrealized), returnPct: perf[b].returnPct, trades: perf[b].trades,
-      winRate: perf[b].winRate, avgPnlPct: perf[b].avgPnlPct,
-      open: perf[b].open.map(trade), pending: perf[b].pending.map((p) => ({ code: p.code, name: p.name })),
-      recent: perf[b].recent.map(trade),
-    };
   return {
     date, generatedAt, historyDays, notes,
     short: { count: result.counts.short, rows: result.short.map(shortRow), rules: cfg.short.rules, rankBy: cfg.short.rankBy },
     mid: { count: result.counts.mid, rows: result.mid.map(midRow), rules: cfg.mid.rules, rankBy: cfg.mid.rankBy },
-    paper: perf
-      ? { startDate: perf.startDate, benchmark: perf.benchmark, short: book("short"), mid: book("mid"), params: cfg.paper, equity }
-      : null,
-    events: (events ?? []).map((e) => ({ ...e, price: r2(e.price ?? null), pnl: e.pnl === undefined ? undefined : Math.round(e.pnl) })),
+    paper: paperBlock(perf, cfg, equity),
+    events: eventsBlock(events),
   };
 }

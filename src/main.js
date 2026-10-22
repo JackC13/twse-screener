@@ -1,5 +1,6 @@
 // 進入點：node src/main.js run | diagnose
 //   run       抓今天的資料 → 回補歷史 → 篩選 → 模擬交易 → 輸出 docs/data.json 給網頁 dashboard
+//   open      開盤後：用即時報價的開盤價，把排隊中的模擬買單先成交，更新 dashboard
 //   diagnose  只測試各資料來源能不能抓到，不寫入任何檔案
 // 環境變數：TODAY=YYYY-MM-DD（指定日期，測試用）
 
@@ -7,8 +8,8 @@ import * as twse from "./twse.js";
 import * as store from "./store.js";
 import { computeMetrics } from "./indicators.js";
 import { screen } from "./screen.js";
-import { newState, step, summarize } from "./paper.js";
-import { buildDashboard } from "./dashboard.js";
+import { newState, step, summarize, fillPending } from "./paper.js";
+import { buildDashboard, paperBlock, eventsBlock } from "./dashboard.js";
 
 export const taipeiToday = () => new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10);
 
@@ -165,6 +166,7 @@ export async function run({ date = process.env.TODAY || taipeiToday() } = {}) {
       }
       const r = step(state, cfg, date, today, dates, result, byDate[dates[dates.indexOf(date) - 1]]);
       events.push(...r.events);
+      if (state.openEvents?.date === date) events.unshift(...state.openEvents.events);
       state.lastEvents = events;
     }
     perf = summarize(state, cfg, today);
@@ -179,6 +181,62 @@ export async function run({ date = process.env.TODAY || taipeiToday() } = {}) {
   }
   store.saveDashboard(buildDashboard({ date, result, cfg, perf, equity: state.equity ?? [], events, notes, historyDays: dates.length }));
   return { result, perf, notes, events };
+}
+
+/** 開盤後執行：只處理排隊中的買單，不篩選、不檢查出場（出場一律等收盤價） */
+export async function openRun({ date = process.env.TODAY || taipeiToday() } = {}) {
+  const cfg = store.loadConfig();
+  const state = store.loadPaper();
+  const dates = store.listDates();
+  const yesterday = dates.at(-1);
+  if (!state?.startDate || !yesterday || yesterday >= date) {
+    log("沒有需要開盤成交的模擬單（尚未開始模擬，或今天的收盤資料已經處理過），結束。");
+    return { skipped: true };
+  }
+  const books = ["short", "mid"];
+  const codes = [...new Set(books.flatMap((b) => state.books[b].pending.map((o) => o.code)))];
+  if (!codes.length) {
+    log("沒有排隊中的買單，結束。");
+    return { skipped: true };
+  }
+  const quotes = await twse.fetchRealtime(codes);
+  if (!Object.values(quotes).some((q) => q.date === date)) {
+    log("即時報價不是今天的（休市或尚未開盤），結束。");
+    return { skipped: true };
+  }
+  const prevDay = store.loadDay(yesterday);
+  const openOf = (c) => (quotes[c]?.date === date ? quotes[c].open : null);
+
+  // 還沒有開盤價的（尚未成交）先留著，收盤後用正式資料成交
+  const hold = {};
+  for (const b of books) {
+    hold[b] = state.books[b].pending.filter((o) => !openOf(o.code));
+    state.books[b].pending = state.books[b].pending.filter((o) => openOf(o.code));
+  }
+  const events = fillPending(state, cfg, date, yesterday, openOf, (c) => quotes[c]?.prevClose ?? prevDay?.p[c]?.[3], "realtime")
+    .map((e) => ({ ...e, date }));
+  for (const b of books) state.books[b].pending.push(...hold[b]);
+  state.openEvents = { date, events };
+  store.savePaper(state);
+  log(events.map((e) => `${e.book} ${e.type} ${e.code} ${e.price ?? e.reason}`).join("\n") || "沒有成交");
+
+  // 更新 dashboard 的模擬區塊：舊持股用昨收、新買進的用最新成交價估算
+  const prices = { ...(prevDay?.p ?? {}) };
+  for (const [c, q] of Object.entries(quotes)) {
+    const px = q.last ?? q.open;
+    if (q.date === date && px) prices[c] = [q.open, px, px, px, 0, 0];
+  }
+  const dash = store.loadDashboard();
+  if (dash) {
+    const time = new Date(Date.now() + 8 * 3600e3).toISOString().slice(11, 16);
+    dash.paper = paperBlock(summarize(state, cfg, prices), cfg, state.equity ?? []);
+    dash.events = eventsBlock(events);
+    dash.notes = [...(dash.notes ?? []).filter((n) => !n.startsWith("早上")),
+      `早上 ${time} 已用開盤價模擬買進；損益先用當時成交價估算，收盤後會更新，清單仍是 ${dash.date} 收盤後的篩選結果`];
+    dash.generatedAt = new Date().toISOString();
+    store.saveDashboard(dash);
+  }
+  return { events };
 }
 
 export async function diagnose() {
@@ -214,9 +272,11 @@ export async function diagnose() {
   await tryIt("STOCK_DAY_ALL", () => twse.fetchStockDayAll(), (v) => `日期 ${v?.date}，${count(v?.prices)}`);
   await tryIt("BWIBBU_ALL 本益比", () => twse.fetchValuation(), count);
   await tryIt("t187ap05_L 月營收", () => twse.fetchRevenue(), count);
+  await tryIt("即時報價（開盤成交用）", () => twse.fetchRealtime(["2330", "2317"]), (v) => JSON.stringify(v));
   if (failed) process.exitCode = 1;
 }
 
 const mode = process.argv[2];
 if (mode === "run") run().catch((e) => { console.error(e); process.exit(1); });
+else if (mode === "open") openRun().catch((e) => { console.error(e); process.exit(1); });
 else if (mode === "diagnose") diagnose();

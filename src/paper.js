@@ -27,6 +27,38 @@ export function sellProceeds(price, shares, pc) {
 const round2 = (x) => Math.round(x * 100) / 100;
 
 /**
+ * 以開盤價成交排隊中的買單（早上即時報價與收盤後的正式資料都用這個）。
+ * yesterday: date 的前一個交易日，訊號日不是它就視為過期
+ * open(code) / prevClose(code): 取得開盤價與前一日收盤價
+ * source: "realtime"（早上即時報價）或 "official"（收盤後正式資料）
+ */
+export function fillPending(state, cfg, date, yesterday, open, prevClose, source = "official") {
+  const pc = cfg.paper;
+  const events = [];
+  for (const book of BOOKS) {
+    const bc = pc[book];
+    const s = state.books[book];
+    const pending = s.pending;
+    s.pending = [];
+    for (const o of pending) {
+      const price = open(o.code);
+      const cancel = (reason) => events.push({ book, type: "cancel", code: o.code, name: o.name, reason });
+      if (o.signalDate !== yesterday) { cancel("訊號已過期（中間缺了交易日）"); continue; }
+      if (!price) { cancel("沒有開盤價"); continue; }
+      const pcl = prevClose(o.code);
+      if (pcl && price >= pcl * 1.095) { cancel("開盤漲停，買不到"); continue; }
+      if (s.positions.length >= bc.maxPositions) { cancel("持股已滿"); continue; }
+      const shares = Math.floor(bc.perTrade / price);
+      if (shares < 1) continue;
+      const cost = buyCost(price, shares, pc);
+      s.positions.push({ code: o.code, name: o.name, signalDate: o.signalDate, buyDate: date, buyPrice: price, shares, cost, source });
+      events.push({ book, type: "buy", code: o.code, name: o.name, price, shares });
+    }
+  }
+  return events;
+}
+
+/**
  * 推進一個交易日。
  * state: newState() 或上次的狀態
  * date:  "YYYY-MM-DD"
@@ -46,28 +78,25 @@ export function step(state, cfg, date, prices, dates, picks, prev = null) {
   }
   if (state.benchmark && state.benchmark.startClose === null) state.benchmark.startClose = prices[pc.benchmark]?.[3] ?? null;
 
+  // 1. 開盤買進：早上已用即時報價成交的，改用正式開盤價重算；其餘排隊單照常成交
+  const yesterday = dates[dates.indexOf(date) - 1];
+  for (const book of BOOKS) {
+    for (const p of state.books[book].positions) {
+      if (p.buyDate !== date || p.source !== "realtime") continue;
+      const official = prices[p.code]?.[0];
+      if (official && official !== p.buyPrice) {
+        p.buyPrice = official;
+        p.shares = Math.floor(pc[book].perTrade / official);
+        p.cost = buyCost(official, p.shares, pc);
+      }
+      p.source = "official";
+    }
+  }
+  events.push(...fillPending(state, cfg, date, yesterday, (c) => prices[c]?.[0], (c) => prev?.[c]?.[3]));
+
   for (const book of BOOKS) {
     const bc = pc[book];
     const s = state.books[book];
-
-    // 1. 開盤買進
-    const pending = s.pending;
-    s.pending = [];
-    const yesterday = dates[dates.indexOf(date) - 1];
-    for (const o of pending) {
-      const open = prices[o.code]?.[0];
-      const cancel = (reason) => events.push({ book, type: "cancel", code: o.code, name: o.name, reason });
-      if (o.signalDate !== yesterday) { cancel("訊號已過期（中間缺了交易日）"); continue; }
-      if (!open) { cancel("沒有開盤價"); continue; }
-      const prevClose = prev?.[o.code]?.[3];
-      if (prevClose && open >= prevClose * 1.095) { cancel("開盤漲停，買不到"); continue; }
-      if (s.positions.length >= bc.maxPositions) { cancel("持股已滿"); continue; }
-      const shares = Math.floor(bc.perTrade / open);
-      if (shares < 1) continue;
-      const cost = buyCost(open, shares, pc);
-      s.positions.push({ code: o.code, name: o.name, signalDate: o.signalDate, buyDate: date, buyPrice: open, shares, cost });
-      events.push({ book, type: "buy", code: o.code, name: o.name, price: open, shares });
-    }
 
     // 2. 收盤檢查出場
     const keep = [];

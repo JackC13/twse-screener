@@ -45,6 +45,7 @@ export const savePaper = (state) => writeJson(join(ROOT, "data", "paper.json"), 
 
 /** 網頁 dashboard 讀的資料（GitHub Pages 從 docs/ 發布） */
 export const saveDashboard = (data) => writeJson(join(ROOT, "docs", "data.json"), data);
+export const loadDashboard = () => readJson(join(ROOT, "docs", "data.json"), null);
 
 /** 只保留最近 keep 個交易日 */
 export function prune(keep) {

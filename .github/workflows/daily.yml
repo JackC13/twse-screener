@@ -2,15 +2,17 @@ name: 每日台股篩選
 
 on:
   schedule:
-    - cron: "30 9 * * 1-5"   # 台北時間 17:30（週一到週五）；GitHub 排程可能延遲幾十分鐘
+    - cron: "30 9 * * 1-5"   # 台北時間 17:30：收盤後篩選、模擬出場、更新 dashboard
+    - cron: "10 1 * * 1-5"   # 台北時間 09:10：開盤後用開盤價模擬買進
+    # GitHub 排程可能延遲幾十分鐘；開盤價在 09:00 之後就固定了，延遲不影響價格
   workflow_dispatch:
     inputs:
       mode:
-        description: "run = 正式執行；diagnose = 只測試資料來源"
+        description: "run = 收盤後完整執行；open = 開盤後模擬買進；diagnose = 只測試資料來源"
         required: true
         default: run
         type: choice
-        options: [run, diagnose]
+        options: [run, open, diagnose]
       date:
         description: "指定日期 YYYY-MM-DD（留空 = 今天）"
         required: false
@@ -22,6 +24,9 @@ permissions:
 concurrency:
   group: screener
   cancel-in-progress: false
+
+env:
+  MODE: ${{ inputs.mode || (github.event.schedule == '10 1 * * 1-5' && 'open' || 'run') }}
 
 jobs:
   screen:
@@ -37,10 +42,10 @@ jobs:
       - name: 執行
         env:
           TODAY: ${{ inputs.date }}
-        run: node src/main.js ${{ inputs.mode || 'run' }}
+        run: node src/main.js $MODE
 
       - name: 儲存資料與報表
-        if: ${{ (inputs.mode || 'run') == 'run' }}
+        if: ${{ env.MODE != 'diagnose' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -48,6 +53,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "沒有變更"
           else
-            git commit -m "data: $(TZ=Asia/Taipei date +%F)"
+            git commit -m "data: $(TZ=Asia/Taipei date +%F) $MODE"
             git push
           fi
