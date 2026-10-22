@@ -157,9 +157,9 @@ export { sleep };
 
 // ───────────── 盤中即時報價（早上用開盤價模擬成交） ─────────────
 // mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_2330.tw|tse_2317.tw&json=1&delay=0
-// 回傳 msgArray：c 代號、n 名稱、o 開盤、y 昨收、z 最新成交、d 日期 YYYYMMDD；還沒成交的欄位是 "-"
+// 回傳 msgArray：c 代號、n 名稱、o 開盤、y 昨收、z 最新成交、b 委買價（_ 分隔）、d 日期 YYYYMMDD；沒有值的欄位是 "-"
 
-/** → { code: { name, open, prevClose, last, date } } */
+/** → { code: { name, open, prevClose, last, bid, date } } */
 export function parseRealtime(json) {
   const out = {};
   for (const r of json?.msgArray ?? []) {
@@ -168,7 +168,7 @@ export function parseRealtime(json) {
     const d = String(r.d ?? "");
     out[code] = {
       name: String(r.n ?? "").trim(),
-      open: num(r.o), prevClose: num(r.y), last: num(r.z),
+      open: num(r.o), prevClose: num(r.y), last: num(r.z), bid: num(String(r.b ?? "").split("_")[0]),
       date: /^\d{8}$/.test(d) ? `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}` : null,
     };
   }

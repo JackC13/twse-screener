@@ -223,7 +223,7 @@ export async function openRun({ date = process.env.TODAY || taipeiToday() } = {}
   // 更新 dashboard 的模擬區塊：舊持股用昨收、新買進的用最新成交價估算
   const prices = { ...(prevDay?.p ?? {}) };
   for (const [c, q] of Object.entries(quotes)) {
-    const px = q.last ?? q.open;
+    const px = q.last ?? q.bid ?? q.open; // 兩筆成交之間 z 常是 "-"，改用最佳委買價
     if (q.date === date && px) prices[c] = [q.open, px, px, px, 0, 0];
   }
   const dash = store.loadDashboard();

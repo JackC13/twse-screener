@@ -65,6 +65,13 @@ test("開盤後用即時開盤價成交，dashboard 立刻看到持股", async (
   const d = dash();
   assert.equal(d.paper.mid.open[0].code, "2330");
   assert.equal(d.paper.mid.open[0].close, 151);
+});
+
+test("沒有最新成交價時用最佳委買價估算", async () => {
+  const { parseRealtime } = await import("../src/twse.js");
+  const q = parseRealtime({ msgArray: [{ c: "2330", o: "150", z: "-", b: "150.5000_150.0000_", d: "20261022" }] });
+  assert.equal(q["2330"].last, null);
+  assert.equal(q["2330"].bid, 150.5);
   assert.ok(d.notes.some((n) => n.startsWith("早上")));
 });
 
