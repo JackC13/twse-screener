@@ -37,25 +37,39 @@
           "shares": 1631,
           "cost": 100122.29999999999,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "6112",
           "name": "邁達特",
-          "signalDate": "2026-10-22"
+          "signalDate": "2026-10-22",
+          "buyDate": "2026-10-27",
+          "buyPrice": 49.6,
+          "shares": 2016,
+          "cost": 100135.6,
+          "source": "realtime"
         },
         {
           "code": "1101",
           "name": "台泥",
-          "signalDate": "2026-10-22"
+          "signalDate": "2026-10-22",
+          "buyDate": "2026-10-27",
+          "buyPrice": 28.5,
+          "shares": 3508,
+          "cost": 100120,
+          "source": "realtime"
         },
         {
           "code": "6695",
           "name": "芯鼎",
-          "signalDate": "2026-10-22"
+          "signalDate": "2026-10-22",
+          "buyDate": "2026-10-27",
+          "buyPrice": 55.1,
+          "shares": 1814,
+          "cost": 100093.40000000001,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": []
     },
     "mid": {
@@ -79,20 +93,29 @@
           "shares": 9174,
           "cost": 100138.6,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "2607",
           "name": "榮運",
-          "signalDate": "2026-10-22"
+          "signalDate": "2026-10-22",
+          "buyDate": "2026-10-27",
+          "buyPrice": 56.2,
+          "shares": 1779,
+          "cost": 100121.8,
+          "source": "realtime"
         },
         {
           "code": "2520",
           "name": "冠德",
-          "signalDate": "2026-10-22"
+          "signalDate": "2026-10-22",
+          "buyDate": "2026-10-27",
+          "buyPrice": 37.6,
+          "shares": 2659,
+          "cost": 100120.40000000001,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": []
     }
   },
@@ -158,52 +181,52 @@
     }
   ],
   "openEvents": {
-    "date": "2026-10-22",
+    "date": "2026-10-27",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "6491",
-        "name": "晶碩",
-        "price": 430,
-        "shares": 232,
-        "date": "2026-10-22"
+        "code": "6112",
+        "name": "邁達特",
+        "price": 49.6,
+        "shares": 2016,
+        "date": "2026-10-27"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "2324",
-        "name": "仁寶",
-        "price": 38,
-        "shares": 2631,
-        "date": "2026-10-22"
+        "code": "1101",
+        "name": "台泥",
+        "price": 28.5,
+        "shares": 3508,
+        "date": "2026-10-27"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "2356",
-        "name": "英業達",
-        "price": 61.3,
-        "shares": 1631,
-        "date": "2026-10-22"
+        "code": "6695",
+        "name": "芯鼎",
+        "price": 55.1,
+        "shares": 1814,
+        "date": "2026-10-27"
       },
       {
         "book": "mid",
         "type": "buy",
-        "code": "2347",
-        "name": "聯強",
-        "price": 99.5,
-        "shares": 1005,
-        "date": "2026-10-22"
+        "code": "2607",
+        "name": "榮運",
+        "price": 56.2,
+        "shares": 1779,
+        "date": "2026-10-27"
       },
       {
         "book": "mid",
         "type": "buy",
-        "code": "2897",
-        "name": "王道銀行",
-        "price": 10.9,
-        "shares": 9174,
-        "date": "2026-10-22"
+        "code": "2520",
+        "name": "冠德",
+        "price": 37.6,
+        "shares": 2659,
+        "date": "2026-10-27"
       }
     ]
   }
