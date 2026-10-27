@@ -2,9 +2,13 @@ name: 每日台股篩選
 
 on:
   schedule:
-    - cron: "30 9 * * 1-5"   # 台北時間 17:30：收盤後篩選、模擬出場、更新 dashboard
-    - cron: "10 1 * * 1-5"   # 台北時間 09:10：開盤後用開盤價模擬買進
-    # GitHub 排程可能延遲幾十分鐘；開盤價在 09:00 之後就固定了，延遲不影響價格
+    # GitHub 排程常延遲好幾小時，所以每段排兩到三次；同一天重跑不會重複買賣
+    # 分鐘避開整點（整點最塞）
+    - cron: "17 9 * * 1-5"   # 台北 17:17 收盤後
+    - cron: "47 11 * * 1-5"  # 台北 19:47 收盤後（備援）
+    - cron: "7 1 * * 1-5"    # 台北 09:07 開盤後模擬買進
+    - cron: "37 1 * * 1-5"   # 台北 09:37（備援）
+    - cron: "27 2 * * 1-5"   # 台北 10:27（備援）
   workflow_dispatch:
     inputs:
       mode:
@@ -26,7 +30,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  MODE: ${{ inputs.mode || (github.event.schedule == '10 1 * * 1-5' && 'open' || 'run') }}
+  MODE: ${{ inputs.mode || (contains(fromJSON('["7 1 * * 1-5","37 1 * * 1-5","27 2 * * 1-5"]'), github.event.schedule) && 'open' || 'run') }}
 
 jobs:
   screen:

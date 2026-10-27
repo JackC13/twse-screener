@@ -107,3 +107,12 @@ test("不能執行比最新資料更早的日期", async () => {
   await assert.rejects(run({ date: "2026-10-21" }), /只能執行最新的交易日/);
 });
 
+
+test("排程延遲到隔天凌晨：改處理前一個交易日", async () => {
+  holidays.add("20261030");
+  const out = await run({ date: "2026-10-30", fallback: true });
+  assert.ok(!out.skipped);
+  assert.ok(existsSync(join(root, "data", "history", "2026-10-29.json")));
+  const dash = JSON.parse(readFileSync(join(root, "docs", "data.json"), "utf8"));
+  assert.equal(dash.date, "2026-10-29");
+});

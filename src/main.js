@@ -106,7 +106,7 @@ async function backfillInst(cfg, notes) {
   }
 }
 
-export async function run({ date = process.env.TODAY || taipeiToday() } = {}) {
+export async function run({ date = process.env.TODAY || taipeiToday(), fallback = !process.env.TODAY } = {}) {
   const cfg = store.loadConfig();
   const notes = [];
   const keep = keepCode(cfg);
@@ -116,7 +116,18 @@ export async function run({ date = process.env.TODAY || taipeiToday() } = {}) {
   if (latestStored && date < latestStored) {
     throw new Error(`只能執行最新的交易日：已經有 ${latestStored} 的資料，不能再跑 ${date}`);
   }
-  const prices = await getPrices(date, true);
+  let prices = await getPrices(date, true);
+  // GitHub 排程常延遲好幾小時，跨過午夜就會變成「明天」：往前找還沒處理過的最近交易日
+  for (let d = date, i = 0; !prices && fallback && i < 5; i++) {
+    d = prevWeekday(d);
+    if (latestStored && d <= latestStored) break; // 已經處理過
+    await twse.sleep(cfg.data.requestDelayMs);
+    prices = await getPrices(d, false).catch(() => null);
+    if (prices) {
+      log(`今天沒有資料，改處理 ${d}`);
+      date = d;
+    }
+  }
   if (!prices) {
     log("今天不是交易日，或證交所資料尚未更新，結束。");
     return { skipped: true };
