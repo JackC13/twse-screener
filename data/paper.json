@@ -97,25 +97,19 @@
           "shares": 913,
           "cost": 100115.5,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "6277",
           "name": "宏正",
-          "signalDate": "2026-10-28"
-        },
-        {
-          "code": "6689",
-          "name": "伊雲谷",
-          "signalDate": "2026-10-28"
-        },
-        {
-          "code": "2393",
-          "name": "億光",
-          "signalDate": "2026-10-28"
+          "signalDate": "2026-10-28",
+          "buyDate": "2026-10-29",
+          "buyPrice": 95.4,
+          "shares": 1048,
+          "cost": 100121.20000000001,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": []
     },
     "mid": {
@@ -179,20 +173,29 @@
           "shares": 2317,
           "cost": 100120.55,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "3708",
           "name": "上緯投控",
-          "signalDate": "2026-10-28"
+          "signalDate": "2026-10-28",
+          "buyDate": "2026-10-29",
+          "buyPrice": 104,
+          "shares": 961,
+          "cost": 100086,
+          "source": "realtime"
         },
         {
           "code": "2603",
           "name": "長榮",
-          "signalDate": "2026-10-28"
+          "signalDate": "2026-10-28",
+          "buyDate": "2026-10-29",
+          "buyPrice": 261,
+          "shares": 383,
+          "cost": 100105,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": []
     }
   },
@@ -270,52 +273,50 @@
     }
   ],
   "openEvents": {
-    "date": "2026-10-28",
+    "date": "2026-10-29",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "1808",
-        "name": "潤隆",
-        "price": 36.3,
-        "shares": 2754,
-        "date": "2026-10-28"
+        "code": "6277",
+        "name": "宏正",
+        "price": 95.4,
+        "shares": 1048,
+        "date": "2026-10-29"
       },
       {
         "book": "short",
-        "type": "buy",
-        "code": "9910",
-        "name": "豐泰",
-        "price": 70.5,
-        "shares": 1418,
-        "date": "2026-10-28"
+        "type": "cancel",
+        "code": "6689",
+        "name": "伊雲谷",
+        "reason": "持股已滿",
+        "date": "2026-10-29"
       },
       {
         "book": "short",
-        "type": "buy",
-        "code": "1215",
-        "name": "卜蜂",
-        "price": 109.5,
-        "shares": 913,
-        "date": "2026-10-28"
+        "type": "cancel",
+        "code": "2393",
+        "name": "億光",
+        "reason": "持股已滿",
+        "date": "2026-10-29"
       },
       {
         "book": "mid",
         "type": "buy",
-        "code": "5522",
-        "name": "遠雄",
-        "price": 64.2,
-        "shares": 1557,
-        "date": "2026-10-28"
+        "code": "3708",
+        "name": "上緯投控",
+        "price": 104,
+        "shares": 961,
+        "date": "2026-10-29"
       },
       {
         "book": "mid",
         "type": "buy",
-        "code": "2618",
-        "name": "長榮航",
-        "price": 43.15,
-        "shares": 2317,
-        "date": "2026-10-28"
+        "code": "2603",
+        "name": "長榮",
+        "price": 261,
+        "shares": 383,
+        "date": "2026-10-29"
       }
     ]
   }
