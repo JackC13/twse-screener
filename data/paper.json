@@ -109,23 +109,7 @@
           "source": "official"
         }
       ],
-      "pending": [
-        {
-          "code": "4967",
-          "name": "十銓",
-          "signalDate": "2026-10-29"
-        },
-        {
-          "code": "7750",
-          "name": "新代",
-          "signalDate": "2026-10-29"
-        },
-        {
-          "code": "2492",
-          "name": "華新科",
-          "signalDate": "2026-10-29"
-        }
-      ],
+      "pending": [],
       "closed": []
     },
     "mid": {
@@ -209,20 +193,29 @@
           "shares": 383,
           "cost": 100105,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "2393",
           "name": "億光",
-          "signalDate": "2026-10-29"
+          "signalDate": "2026-10-29",
+          "buyDate": "2026-10-30",
+          "buyPrice": 68.8,
+          "shares": 1453,
+          "cost": 100108.4,
+          "source": "realtime"
         },
         {
           "code": "2031",
           "name": "新光鋼",
-          "signalDate": "2026-10-29"
+          "signalDate": "2026-10-29",
+          "buyDate": "2026-10-30",
+          "buyPrice": 47.25,
+          "shares": 2116,
+          "cost": 100123,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": []
     }
   },
@@ -304,50 +297,49 @@
     }
   ],
   "openEvents": {
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "events": [
       {
         "book": "short",
-        "type": "buy",
-        "code": "6277",
-        "name": "宏正",
-        "price": 95.4,
-        "shares": 1048,
-        "date": "2026-10-29"
-      },
-      {
-        "book": "short",
         "type": "cancel",
-        "code": "6689",
-        "name": "伊雲谷",
+        "code": "4967",
+        "name": "十銓",
         "reason": "持股已滿",
-        "date": "2026-10-29"
+        "date": "2026-10-30"
       },
       {
         "book": "short",
         "type": "cancel",
+        "code": "7750",
+        "name": "新代",
+        "reason": "持股已滿",
+        "date": "2026-10-30"
+      },
+      {
+        "book": "short",
+        "type": "cancel",
+        "code": "2492",
+        "name": "華新科",
+        "reason": "持股已滿",
+        "date": "2026-10-30"
+      },
+      {
+        "book": "mid",
+        "type": "buy",
         "code": "2393",
         "name": "億光",
-        "reason": "持股已滿",
-        "date": "2026-10-29"
+        "price": 68.8,
+        "shares": 1453,
+        "date": "2026-10-30"
       },
       {
         "book": "mid",
         "type": "buy",
-        "code": "3708",
-        "name": "上緯投控",
-        "price": 104,
-        "shares": 961,
-        "date": "2026-10-29"
-      },
-      {
-        "book": "mid",
-        "type": "buy",
-        "code": "2603",
-        "name": "長榮",
-        "price": 261,
-        "shares": 383,
-        "date": "2026-10-29"
+        "code": "2031",
+        "name": "新光鋼",
+        "price": 47.25,
+        "shares": 2116,
+        "date": "2026-10-30"
       }
     ]
   }
