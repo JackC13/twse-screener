@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-10-29",
+  "lastDate": "2026-10-30",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -16,16 +16,6 @@
           "buyPrice": 430,
           "shares": 232,
           "cost": 99902,
-          "source": "official"
-        },
-        {
-          "code": "2324",
-          "name": "仁寶",
-          "signalDate": "2026-10-21",
-          "buyDate": "2026-10-22",
-          "buyPrice": 38,
-          "shares": 2631,
-          "cost": 100120,
           "source": "official"
         },
         {
@@ -59,16 +49,6 @@
           "source": "official"
         },
         {
-          "code": "6695",
-          "name": "芯鼎",
-          "signalDate": "2026-10-22",
-          "buyDate": "2026-10-27",
-          "buyPrice": 55.1,
-          "shares": 1814,
-          "cost": 100093.40000000001,
-          "source": "official"
-        },
-        {
           "code": "1808",
           "name": "潤隆",
           "signalDate": "2026-10-27",
@@ -87,6 +67,59 @@
           "shares": 1418,
           "cost": 100111,
           "source": "official"
+        }
+      ],
+      "pending": [
+        {
+          "code": "2465",
+          "name": "麗臺",
+          "signalDate": "2026-10-30"
+        },
+        {
+          "code": "2379",
+          "name": "瑞昱",
+          "signalDate": "2026-10-30"
+        },
+        {
+          "code": "2603",
+          "name": "長榮",
+          "signalDate": "2026-10-30"
+        }
+      ],
+      "closed": [
+        {
+          "code": "2324",
+          "name": "仁寶",
+          "signalDate": "2026-10-21",
+          "buyDate": "2026-10-22",
+          "buyPrice": 38,
+          "shares": 2631,
+          "cost": 100120,
+          "source": "official",
+          "sellDate": "2026-10-30",
+          "sellPrice": 35.2,
+          "proceeds": 92203.20000000001,
+          "pnl": -7916.799999999988,
+          "pnlPct": -7.91,
+          "reason": "停損",
+          "heldDays": 4
+        },
+        {
+          "code": "6695",
+          "name": "芯鼎",
+          "signalDate": "2026-10-22",
+          "buyDate": "2026-10-27",
+          "buyPrice": 55.1,
+          "shares": 1814,
+          "cost": 100093.40000000001,
+          "source": "official",
+          "sellDate": "2026-10-30",
+          "sellPrice": 52.3,
+          "proceeds": 94453.2,
+          "pnl": -5640.200000000012,
+          "pnlPct": -5.63,
+          "reason": "停損",
+          "heldDays": 3
         },
         {
           "code": "1215",
@@ -96,7 +129,14 @@
           "buyPrice": 109.5,
           "shares": 913,
           "cost": 100115.5,
-          "source": "official"
+          "source": "official",
+          "sellDate": "2026-10-30",
+          "sellPrice": 104,
+          "proceeds": 94533,
+          "pnl": -5582.5,
+          "pnlPct": -5.58,
+          "reason": "停損",
+          "heldDays": 2
         },
         {
           "code": "6277",
@@ -106,11 +146,16 @@
           "buyPrice": 95.4,
           "shares": 1048,
           "cost": 100121.20000000001,
-          "source": "official"
+          "source": "official",
+          "sellDate": "2026-10-30",
+          "sellPrice": 89.7,
+          "proceeds": 93590.6,
+          "pnl": -6530.600000000006,
+          "pnlPct": -6.52,
+          "reason": "停損",
+          "heldDays": 1
         }
-      ],
-      "pending": [],
-      "closed": []
+      ]
     },
     "mid": {
       "positions": [
@@ -202,7 +247,7 @@
           "buyPrice": 68.8,
           "shares": 1453,
           "cost": 100108.4,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "2031",
@@ -212,56 +257,97 @@
           "buyPrice": 47.25,
           "shares": 2116,
           "cost": 100123,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "1615",
+          "name": "大山",
+          "signalDate": "2026-10-30"
+        }
+      ],
       "closed": []
     }
   },
   "lastEvents": [
     {
       "book": "short",
-      "type": "buy",
-      "code": "6277",
-      "name": "宏正",
-      "price": 95.4,
-      "shares": 1048,
-      "date": "2026-10-29"
-    },
-    {
-      "book": "short",
       "type": "cancel",
-      "code": "6689",
-      "name": "伊雲谷",
+      "code": "4967",
+      "name": "十銓",
       "reason": "持股已滿",
-      "date": "2026-10-29"
+      "date": "2026-10-30"
     },
     {
       "book": "short",
       "type": "cancel",
+      "code": "7750",
+      "name": "新代",
+      "reason": "持股已滿",
+      "date": "2026-10-30"
+    },
+    {
+      "book": "short",
+      "type": "cancel",
+      "code": "2492",
+      "name": "華新科",
+      "reason": "持股已滿",
+      "date": "2026-10-30"
+    },
+    {
+      "book": "mid",
+      "type": "buy",
       "code": "2393",
       "name": "億光",
-      "reason": "持股已滿",
-      "date": "2026-10-29"
+      "price": 68.8,
+      "shares": 1453,
+      "date": "2026-10-30"
     },
     {
       "book": "mid",
       "type": "buy",
-      "code": "3708",
-      "name": "上緯投控",
+      "code": "2031",
+      "name": "新光鋼",
+      "price": 47.25,
+      "shares": 2116,
+      "date": "2026-10-30"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "2324",
+      "name": "仁寶",
+      "price": 35.2,
+      "pnl": -7916.799999999988,
+      "reason": "停損"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "6695",
+      "name": "芯鼎",
+      "price": 52.3,
+      "pnl": -5640.200000000012,
+      "reason": "停損"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "1215",
+      "name": "卜蜂",
       "price": 104,
-      "shares": 961,
-      "date": "2026-10-29"
+      "pnl": -5582.5,
+      "reason": "停損"
     },
     {
-      "book": "mid",
-      "type": "buy",
-      "code": "2603",
-      "name": "長榮",
-      "price": 261,
-      "shares": 383,
-      "date": "2026-10-29"
+      "book": "short",
+      "type": "sell",
+      "code": "6277",
+      "name": "宏正",
+      "price": 89.7,
+      "pnl": -6530.600000000006,
+      "reason": "停損"
     }
   ],
   "equity": [
@@ -294,6 +380,12 @@
       "short": -2.16,
       "mid": -0.78,
       "bench": -0.83
+    },
+    {
+      "date": "2026-10-30",
+      "short": -4.06,
+      "mid": -1.46,
+      "bench": -2.96
     }
   ],
   "openEvents": {
