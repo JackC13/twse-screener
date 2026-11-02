@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-10-30",
+  "lastDate": "2026-11-02",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -69,16 +69,6 @@
           "source": "official"
         },
         {
-          "code": "2465",
-          "name": "麗臺",
-          "signalDate": "2026-10-30",
-          "buyDate": "2026-11-02",
-          "buyPrice": 103,
-          "shares": 970,
-          "cost": 100052,
-          "source": "realtime"
-        },
-        {
           "code": "2379",
           "name": "瑞昱",
           "signalDate": "2026-10-30",
@@ -86,7 +76,7 @@
           "buyPrice": 824,
           "shares": 121,
           "cost": 99846,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "2603",
@@ -96,7 +86,7 @@
           "buyPrice": 271,
           "shares": 369,
           "cost": 100141,
-          "source": "realtime"
+          "source": "official"
         }
       ],
       "pending": [],
@@ -168,6 +158,23 @@
           "pnlPct": -6.52,
           "reason": "停損",
           "heldDays": 1
+        },
+        {
+          "code": "2465",
+          "name": "麗臺",
+          "signalDate": "2026-10-30",
+          "buyDate": "2026-11-02",
+          "buyPrice": 103,
+          "shares": 970,
+          "cost": 100052,
+          "source": "official",
+          "sellDate": "2026-11-02",
+          "sellPrice": 112,
+          "proceeds": 108161,
+          "pnl": 8109,
+          "pnlPct": 8.1,
+          "reason": "停利",
+          "heldDays": 0
         }
       ]
     },
@@ -274,88 +281,65 @@
           "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "3010",
+          "name": "華立",
+          "signalDate": "2026-11-02"
+        },
+        {
+          "code": "2610",
+          "name": "華航",
+          "signalDate": "2026-11-02"
+        }
+      ],
       "closed": []
     }
   },
   "lastEvents": [
     {
       "book": "short",
-      "type": "cancel",
-      "code": "4967",
-      "name": "十銓",
-      "reason": "持股已滿",
-      "date": "2026-10-30"
+      "type": "buy",
+      "code": "2465",
+      "name": "麗臺",
+      "price": 103,
+      "shares": 970,
+      "date": "2026-11-02"
     },
     {
       "book": "short",
-      "type": "cancel",
-      "code": "7750",
-      "name": "新代",
-      "reason": "持股已滿",
-      "date": "2026-10-30"
+      "type": "buy",
+      "code": "2379",
+      "name": "瑞昱",
+      "price": 824,
+      "shares": 121,
+      "date": "2026-11-02"
     },
     {
       "book": "short",
-      "type": "cancel",
-      "code": "2492",
-      "name": "華新科",
-      "reason": "持股已滿",
-      "date": "2026-10-30"
+      "type": "buy",
+      "code": "2603",
+      "name": "長榮",
+      "price": 271,
+      "shares": 369,
+      "date": "2026-11-02"
     },
     {
       "book": "mid",
-      "type": "buy",
-      "code": "2393",
-      "name": "億光",
-      "price": 68.8,
-      "shares": 1453,
-      "date": "2026-10-30"
-    },
-    {
-      "book": "mid",
-      "type": "buy",
-      "code": "2031",
-      "name": "新光鋼",
-      "price": 47.25,
-      "shares": 2116,
-      "date": "2026-10-30"
+      "type": "cancel",
+      "code": "1615",
+      "name": "大山",
+      "reason": "持股已滿",
+      "date": "2026-11-02"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "2324",
-      "name": "仁寶",
-      "price": 35.2,
-      "pnl": -7916.799999999988,
-      "reason": "停損"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "6695",
-      "name": "芯鼎",
-      "price": 52.3,
-      "pnl": -5640.200000000012,
-      "reason": "停損"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "1215",
-      "name": "卜蜂",
-      "price": 104,
-      "pnl": -5582.5,
-      "reason": "停損"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "6277",
-      "name": "宏正",
-      "price": 89.7,
-      "pnl": -6530.600000000006,
-      "reason": "停損"
+      "code": "2465",
+      "name": "麗臺",
+      "price": 112,
+      "pnl": 8109,
+      "reason": "停利"
     }
   ],
   "equity": [
@@ -394,6 +378,12 @@
       "short": -4.06,
       "mid": -1.46,
       "bench": -2.96
+    },
+    {
+      "date": "2026-11-02",
+      "short": -3.42,
+      "mid": -1.84,
+      "bench": -3.74
     }
   ],
   "openEvents": {
