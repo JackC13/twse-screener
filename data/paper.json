@@ -67,25 +67,39 @@
           "shares": 1418,
           "cost": 100111,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "2465",
           "name": "麗臺",
-          "signalDate": "2026-10-30"
+          "signalDate": "2026-10-30",
+          "buyDate": "2026-11-02",
+          "buyPrice": 103,
+          "shares": 970,
+          "cost": 100052,
+          "source": "realtime"
         },
         {
           "code": "2379",
           "name": "瑞昱",
-          "signalDate": "2026-10-30"
+          "signalDate": "2026-10-30",
+          "buyDate": "2026-11-02",
+          "buyPrice": 824,
+          "shares": 121,
+          "cost": 99846,
+          "source": "realtime"
         },
         {
           "code": "2603",
           "name": "長榮",
-          "signalDate": "2026-10-30"
+          "signalDate": "2026-10-30",
+          "buyDate": "2026-11-02",
+          "buyPrice": 271,
+          "shares": 369,
+          "cost": 100141,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -260,13 +274,7 @@
           "source": "official"
         }
       ],
-      "pending": [
-        {
-          "code": "1615",
-          "name": "大山",
-          "signalDate": "2026-10-30"
-        }
-      ],
+      "pending": [],
       "closed": []
     }
   },
@@ -389,49 +397,42 @@
     }
   ],
   "openEvents": {
-    "date": "2026-10-30",
+    "date": "2026-11-02",
     "events": [
       {
         "book": "short",
-        "type": "cancel",
-        "code": "4967",
-        "name": "十銓",
-        "reason": "持股已滿",
-        "date": "2026-10-30"
+        "type": "buy",
+        "code": "2465",
+        "name": "麗臺",
+        "price": 103,
+        "shares": 970,
+        "date": "2026-11-02"
       },
       {
         "book": "short",
-        "type": "cancel",
-        "code": "7750",
-        "name": "新代",
-        "reason": "持股已滿",
-        "date": "2026-10-30"
+        "type": "buy",
+        "code": "2379",
+        "name": "瑞昱",
+        "price": 824,
+        "shares": 121,
+        "date": "2026-11-02"
       },
       {
         "book": "short",
+        "type": "buy",
+        "code": "2603",
+        "name": "長榮",
+        "price": 271,
+        "shares": 369,
+        "date": "2026-11-02"
+      },
+      {
+        "book": "mid",
         "type": "cancel",
-        "code": "2492",
-        "name": "華新科",
+        "code": "1615",
+        "name": "大山",
         "reason": "持股已滿",
-        "date": "2026-10-30"
-      },
-      {
-        "book": "mid",
-        "type": "buy",
-        "code": "2393",
-        "name": "億光",
-        "price": 68.8,
-        "shares": 1453,
-        "date": "2026-10-30"
-      },
-      {
-        "book": "mid",
-        "type": "buy",
-        "code": "2031",
-        "name": "新光鋼",
-        "price": 47.25,
-        "shares": 2116,
-        "date": "2026-10-30"
+        "date": "2026-11-02"
       }
     ]
   }
