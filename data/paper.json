@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-02",
+  "lastDate": "2026-11-03",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -8,26 +8,6 @@
   "books": {
     "short": {
       "positions": [
-        {
-          "code": "6491",
-          "name": "晶碩",
-          "signalDate": "2026-10-21",
-          "buyDate": "2026-10-22",
-          "buyPrice": 430,
-          "shares": 232,
-          "cost": 99902,
-          "source": "official"
-        },
-        {
-          "code": "2356",
-          "name": "英業達",
-          "signalDate": "2026-10-21",
-          "buyDate": "2026-10-22",
-          "buyPrice": 61.3,
-          "shares": 1631,
-          "cost": 100122.29999999999,
-          "source": "official"
-        },
         {
           "code": "6112",
           "name": "邁達特",
@@ -69,16 +49,6 @@
           "source": "official"
         },
         {
-          "code": "2379",
-          "name": "瑞昱",
-          "signalDate": "2026-10-30",
-          "buyDate": "2026-11-02",
-          "buyPrice": 824,
-          "shares": 121,
-          "cost": 99846,
-          "source": "official"
-        },
-        {
           "code": "2603",
           "name": "長榮",
           "signalDate": "2026-10-30",
@@ -89,7 +59,18 @@
           "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "1802",
+          "name": "台玻",
+          "signalDate": "2026-11-03"
+        },
+        {
+          "code": "2618",
+          "name": "長榮航",
+          "signalDate": "2026-11-03"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -175,6 +156,57 @@
           "pnlPct": 8.1,
           "reason": "停利",
           "heldDays": 0
+        },
+        {
+          "code": "6491",
+          "name": "晶碩",
+          "signalDate": "2026-10-21",
+          "buyDate": "2026-10-22",
+          "buyPrice": 430,
+          "shares": 232,
+          "cost": 99902,
+          "source": "official",
+          "sellDate": "2026-11-03",
+          "sellPrice": 405,
+          "proceeds": 93546,
+          "pnl": -6356,
+          "pnlPct": -6.36,
+          "reason": "停損",
+          "heldDays": 6
+        },
+        {
+          "code": "2356",
+          "name": "英業達",
+          "signalDate": "2026-10-21",
+          "buyDate": "2026-10-22",
+          "buyPrice": 61.3,
+          "shares": 1631,
+          "cost": 100122.29999999999,
+          "source": "official",
+          "sellDate": "2026-11-03",
+          "sellPrice": 57.2,
+          "proceeds": 92882.20000000001,
+          "pnl": -7240.099999999977,
+          "pnlPct": -7.23,
+          "reason": "停損",
+          "heldDays": 6
+        },
+        {
+          "code": "2379",
+          "name": "瑞昱",
+          "signalDate": "2026-10-30",
+          "buyDate": "2026-11-02",
+          "buyPrice": 824,
+          "shares": 121,
+          "cost": 99846,
+          "source": "official",
+          "sellDate": "2026-11-03",
+          "sellPrice": 756,
+          "proceeds": 91072,
+          "pnl": -8774,
+          "pnlPct": -8.79,
+          "reason": "停損",
+          "heldDays": 1
         }
       ]
     },
@@ -281,54 +313,64 @@
           "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "3356",
+          "name": "奇偶",
+          "signalDate": "2026-11-03"
+        },
+        {
+          "code": "1615",
+          "name": "大山",
+          "signalDate": "2026-11-03"
+        }
+      ],
       "closed": []
     }
   },
   "lastEvents": [
     {
-      "book": "short",
-      "type": "buy",
-      "code": "2465",
-      "name": "麗臺",
-      "price": 103,
-      "shares": 970,
-      "date": "2026-11-02"
-    },
-    {
-      "book": "short",
-      "type": "buy",
-      "code": "2379",
-      "name": "瑞昱",
-      "price": 824,
-      "shares": 121,
-      "date": "2026-11-02"
-    },
-    {
-      "book": "short",
-      "type": "buy",
-      "code": "2603",
-      "name": "長榮",
-      "price": 271,
-      "shares": 369,
-      "date": "2026-11-02"
+      "book": "mid",
+      "type": "cancel",
+      "code": "3010",
+      "name": "華立",
+      "reason": "持股已滿",
+      "date": "2026-11-03"
     },
     {
       "book": "mid",
       "type": "cancel",
-      "code": "1615",
-      "name": "大山",
+      "code": "2610",
+      "name": "華航",
       "reason": "持股已滿",
-      "date": "2026-11-02"
+      "date": "2026-11-03"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "2465",
-      "name": "麗臺",
-      "price": 112,
-      "pnl": 8109,
-      "reason": "停利"
+      "code": "6491",
+      "name": "晶碩",
+      "price": 405,
+      "pnl": -6356,
+      "reason": "停損"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "2356",
+      "name": "英業達",
+      "price": 57.2,
+      "pnl": -7240.099999999977,
+      "reason": "停損"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "2379",
+      "name": "瑞昱",
+      "price": 756,
+      "pnl": -8774,
+      "reason": "停損"
     }
   ],
   "equity": [
@@ -373,6 +415,12 @@
       "short": -3.42,
       "mid": -1.84,
       "bench": -3.74
+    },
+    {
+      "date": "2026-11-03",
+      "short": -5.73,
+      "mid": -4.03,
+      "bench": -6.98
     }
   ],
   "openEvents": {
