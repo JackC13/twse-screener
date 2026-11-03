@@ -281,18 +281,7 @@
           "source": "official"
         }
       ],
-      "pending": [
-        {
-          "code": "3010",
-          "name": "華立",
-          "signalDate": "2026-11-02"
-        },
-        {
-          "code": "2610",
-          "name": "華航",
-          "signalDate": "2026-11-02"
-        }
-      ],
+      "pending": [],
       "closed": []
     }
   },
@@ -387,42 +376,23 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-02",
+    "date": "2026-11-03",
     "events": [
       {
-        "book": "short",
-        "type": "buy",
-        "code": "2465",
-        "name": "麗臺",
-        "price": 103,
-        "shares": 970,
-        "date": "2026-11-02"
-      },
-      {
-        "book": "short",
-        "type": "buy",
-        "code": "2379",
-        "name": "瑞昱",
-        "price": 824,
-        "shares": 121,
-        "date": "2026-11-02"
-      },
-      {
-        "book": "short",
-        "type": "buy",
-        "code": "2603",
-        "name": "長榮",
-        "price": 271,
-        "shares": 369,
-        "date": "2026-11-02"
+        "book": "mid",
+        "type": "cancel",
+        "code": "3010",
+        "name": "華立",
+        "reason": "持股已滿",
+        "date": "2026-11-03"
       },
       {
         "book": "mid",
         "type": "cancel",
-        "code": "1615",
-        "name": "大山",
+        "code": "2610",
+        "name": "華航",
         "reason": "持股已滿",
-        "date": "2026-11-02"
+        "date": "2026-11-03"
       }
     ]
   }
