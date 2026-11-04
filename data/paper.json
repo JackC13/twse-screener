@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-03",
+  "lastDate": "2026-11-04",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -26,16 +26,6 @@
           "buyPrice": 28.5,
           "shares": 3508,
           "cost": 100120,
-          "source": "official"
-        },
-        {
-          "code": "1808",
-          "name": "潤隆",
-          "signalDate": "2026-10-27",
-          "buyDate": "2026-10-28",
-          "buyPrice": 36.3,
-          "shares": 2754,
-          "cost": 100112.2,
           "source": "official"
         },
         {
@@ -66,7 +56,7 @@
           "buyPrice": 69.2,
           "shares": 1445,
           "cost": 100136,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "2618",
@@ -76,10 +66,21 @@
           "buyPrice": 44.1,
           "shares": 2267,
           "cost": 100116.7,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "6446",
+          "name": "藥華藥",
+          "signalDate": "2026-11-04"
+        },
+        {
+          "code": "9933",
+          "name": "中鼎",
+          "signalDate": "2026-11-04"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -216,6 +217,23 @@
           "pnlPct": -8.79,
           "reason": "停損",
           "heldDays": 1
+        },
+        {
+          "code": "1808",
+          "name": "潤隆",
+          "signalDate": "2026-10-27",
+          "buyDate": "2026-10-28",
+          "buyPrice": 36.3,
+          "shares": 2754,
+          "cost": 100112.2,
+          "source": "official",
+          "sellDate": "2026-11-04",
+          "sellPrice": 33.15,
+          "proceeds": 90892.09999999999,
+          "pnl": -9220.100000000006,
+          "pnlPct": -9.21,
+          "reason": "停損",
+          "heldDays": 5
         }
       ]
     },
@@ -322,52 +340,63 @@
           "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "3356",
+          "name": "奇偶",
+          "signalDate": "2026-11-04"
+        },
+        {
+          "code": "2006",
+          "name": "東和鋼鐵",
+          "signalDate": "2026-11-04"
+        }
+      ],
       "closed": []
     }
   },
   "lastEvents": [
     {
+      "book": "short",
+      "type": "buy",
+      "code": "1802",
+      "name": "台玻",
+      "price": 69.2,
+      "shares": 1445,
+      "date": "2026-11-04"
+    },
+    {
+      "book": "short",
+      "type": "buy",
+      "code": "2618",
+      "name": "長榮航",
+      "price": 44.1,
+      "shares": 2267,
+      "date": "2026-11-04"
+    },
+    {
       "book": "mid",
       "type": "cancel",
-      "code": "3010",
-      "name": "華立",
+      "code": "3356",
+      "name": "奇偶",
       "reason": "持股已滿",
-      "date": "2026-11-03"
+      "date": "2026-11-04"
     },
     {
       "book": "mid",
       "type": "cancel",
-      "code": "2610",
-      "name": "華航",
+      "code": "1615",
+      "name": "大山",
       "reason": "持股已滿",
-      "date": "2026-11-03"
+      "date": "2026-11-04"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "6491",
-      "name": "晶碩",
-      "price": 405,
-      "pnl": -6356,
-      "reason": "停損"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "2356",
-      "name": "英業達",
-      "price": 57.2,
-      "pnl": -7240.099999999977,
-      "reason": "停損"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "2379",
-      "name": "瑞昱",
-      "price": 756,
-      "pnl": -8774,
+      "code": "1808",
+      "name": "潤隆",
+      "price": 33.15,
+      "pnl": -9220.100000000006,
       "reason": "停損"
     }
   ],
@@ -419,6 +448,12 @@
       "short": -5.73,
       "mid": -4.03,
       "bench": -6.98
+    },
+    {
+      "date": "2026-11-04",
+      "short": -6.78,
+      "mid": -4.31,
+      "bench": -7.67
     }
   ],
   "openEvents": {
