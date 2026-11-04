@@ -57,20 +57,29 @@
           "shares": 369,
           "cost": 100141,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "1802",
           "name": "台玻",
-          "signalDate": "2026-11-03"
+          "signalDate": "2026-11-03",
+          "buyDate": "2026-11-04",
+          "buyPrice": 69.2,
+          "shares": 1445,
+          "cost": 100136,
+          "source": "realtime"
         },
         {
           "code": "2618",
           "name": "長榮航",
-          "signalDate": "2026-11-03"
+          "signalDate": "2026-11-03",
+          "buyDate": "2026-11-04",
+          "buyPrice": 44.1,
+          "shares": 2267,
+          "cost": 100116.7,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -313,18 +322,7 @@
           "source": "official"
         }
       ],
-      "pending": [
-        {
-          "code": "3356",
-          "name": "奇偶",
-          "signalDate": "2026-11-03"
-        },
-        {
-          "code": "1615",
-          "name": "大山",
-          "signalDate": "2026-11-03"
-        }
-      ],
+      "pending": [],
       "closed": []
     }
   },
@@ -424,23 +422,41 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-03",
+    "date": "2026-11-04",
     "events": [
       {
-        "book": "mid",
-        "type": "cancel",
-        "code": "3010",
-        "name": "華立",
-        "reason": "持股已滿",
-        "date": "2026-11-03"
+        "book": "short",
+        "type": "buy",
+        "code": "1802",
+        "name": "台玻",
+        "price": 69.2,
+        "shares": 1445,
+        "date": "2026-11-04"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "2618",
+        "name": "長榮航",
+        "price": 44.1,
+        "shares": 2267,
+        "date": "2026-11-04"
       },
       {
         "book": "mid",
         "type": "cancel",
-        "code": "2610",
-        "name": "華航",
+        "code": "3356",
+        "name": "奇偶",
         "reason": "持股已滿",
-        "date": "2026-11-03"
+        "date": "2026-11-04"
+      },
+      {
+        "book": "mid",
+        "type": "cancel",
+        "code": "1615",
+        "name": "大山",
+        "reason": "持股已滿",
+        "date": "2026-11-04"
       }
     ]
   }
