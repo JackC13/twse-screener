@@ -67,20 +67,29 @@
           "shares": 2267,
           "cost": 100116.7,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "6446",
           "name": "藥華藥",
-          "signalDate": "2026-11-04"
+          "signalDate": "2026-11-04",
+          "buyDate": "2026-11-05",
+          "buyPrice": 1270,
+          "shares": 78,
+          "cost": 99201,
+          "source": "realtime"
         },
         {
           "code": "9933",
           "name": "中鼎",
-          "signalDate": "2026-11-04"
+          "signalDate": "2026-11-04",
+          "buyDate": "2026-11-05",
+          "buyPrice": 47.65,
+          "shares": 2098,
+          "cost": 100111.7,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -340,18 +349,7 @@
           "source": "official"
         }
       ],
-      "pending": [
-        {
-          "code": "3356",
-          "name": "奇偶",
-          "signalDate": "2026-11-04"
-        },
-        {
-          "code": "2006",
-          "name": "東和鋼鐵",
-          "signalDate": "2026-11-04"
-        }
-      ],
+      "pending": [],
       "closed": []
     }
   },
@@ -457,25 +455,25 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-04",
+    "date": "2026-11-05",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "1802",
-        "name": "台玻",
-        "price": 69.2,
-        "shares": 1445,
-        "date": "2026-11-04"
+        "code": "6446",
+        "name": "藥華藥",
+        "price": 1270,
+        "shares": 78,
+        "date": "2026-11-05"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "2618",
-        "name": "長榮航",
-        "price": 44.1,
-        "shares": 2267,
-        "date": "2026-11-04"
+        "code": "9933",
+        "name": "中鼎",
+        "price": 47.65,
+        "shares": 2098,
+        "date": "2026-11-05"
       },
       {
         "book": "mid",
@@ -483,15 +481,15 @@
         "code": "3356",
         "name": "奇偶",
         "reason": "持股已滿",
-        "date": "2026-11-04"
+        "date": "2026-11-05"
       },
       {
         "book": "mid",
         "type": "cancel",
-        "code": "1615",
-        "name": "大山",
+        "code": "2006",
+        "name": "東和鋼鐵",
         "reason": "持股已滿",
-        "date": "2026-11-04"
+        "date": "2026-11-05"
       }
     ]
   }
