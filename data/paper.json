@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-04",
+  "lastDate": "2026-11-05",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -49,16 +49,6 @@
           "source": "official"
         },
         {
-          "code": "1802",
-          "name": "台玻",
-          "signalDate": "2026-11-03",
-          "buyDate": "2026-11-04",
-          "buyPrice": 69.2,
-          "shares": 1445,
-          "cost": 100136,
-          "source": "official"
-        },
-        {
           "code": "2618",
           "name": "長榮航",
           "signalDate": "2026-11-03",
@@ -69,16 +59,6 @@
           "source": "official"
         },
         {
-          "code": "6446",
-          "name": "藥華藥",
-          "signalDate": "2026-11-04",
-          "buyDate": "2026-11-05",
-          "buyPrice": 1270,
-          "shares": 78,
-          "cost": 99201,
-          "source": "realtime"
-        },
-        {
           "code": "9933",
           "name": "中鼎",
           "signalDate": "2026-11-04",
@@ -86,10 +66,21 @@
           "buyPrice": 47.65,
           "shares": 2098,
           "cost": 100111.7,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "2610",
+          "name": "華航",
+          "signalDate": "2026-11-05"
+        },
+        {
+          "code": "1476",
+          "name": "儒鴻",
+          "signalDate": "2026-11-05"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -243,6 +234,40 @@
           "pnlPct": -9.21,
           "reason": "停損",
           "heldDays": 5
+        },
+        {
+          "code": "1802",
+          "name": "台玻",
+          "signalDate": "2026-11-03",
+          "buyDate": "2026-11-04",
+          "buyPrice": 69.2,
+          "shares": 1445,
+          "cost": 100136,
+          "source": "official",
+          "sellDate": "2026-11-05",
+          "sellPrice": 60.1,
+          "proceeds": 86461.5,
+          "pnl": -13674.5,
+          "pnlPct": -13.66,
+          "reason": "停損",
+          "heldDays": 1
+        },
+        {
+          "code": "6446",
+          "name": "藥華藥",
+          "signalDate": "2026-11-04",
+          "buyDate": "2026-11-05",
+          "buyPrice": 1270,
+          "shares": 78,
+          "cost": 99201,
+          "source": "official",
+          "sellDate": "2026-11-05",
+          "sellPrice": 1185,
+          "proceeds": 92022,
+          "pnl": -7179,
+          "pnlPct": -7.24,
+          "reason": "停損",
+          "heldDays": 0
         }
       ]
     },
@@ -349,7 +374,13 @@
           "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "2006",
+          "name": "東和鋼鐵",
+          "signalDate": "2026-11-05"
+        }
+      ],
       "closed": []
     }
   },
@@ -357,20 +388,20 @@
     {
       "book": "short",
       "type": "buy",
-      "code": "1802",
-      "name": "台玻",
-      "price": 69.2,
-      "shares": 1445,
-      "date": "2026-11-04"
+      "code": "6446",
+      "name": "藥華藥",
+      "price": 1270,
+      "shares": 78,
+      "date": "2026-11-05"
     },
     {
       "book": "short",
       "type": "buy",
-      "code": "2618",
-      "name": "長榮航",
-      "price": 44.1,
-      "shares": 2267,
-      "date": "2026-11-04"
+      "code": "9933",
+      "name": "中鼎",
+      "price": 47.65,
+      "shares": 2098,
+      "date": "2026-11-05"
     },
     {
       "book": "mid",
@@ -378,23 +409,32 @@
       "code": "3356",
       "name": "奇偶",
       "reason": "持股已滿",
-      "date": "2026-11-04"
+      "date": "2026-11-05"
     },
     {
       "book": "mid",
       "type": "cancel",
-      "code": "1615",
-      "name": "大山",
+      "code": "2006",
+      "name": "東和鋼鐵",
       "reason": "持股已滿",
-      "date": "2026-11-04"
+      "date": "2026-11-05"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "1808",
-      "name": "潤隆",
-      "price": 33.15,
-      "pnl": -9220.100000000006,
+      "code": "1802",
+      "name": "台玻",
+      "price": 60.1,
+      "pnl": -13674.5,
+      "reason": "停損"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "6446",
+      "name": "藥華藥",
+      "price": 1185,
+      "pnl": -7179,
       "reason": "停損"
     }
   ],
@@ -452,6 +492,12 @@
       "short": -6.78,
       "mid": -4.31,
       "bench": -7.67
+    },
+    {
+      "date": "2026-11-05",
+      "short": -9.05,
+      "mid": -5.65,
+      "bench": -10.17
     }
   ],
   "openEvents": {
