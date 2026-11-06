@@ -67,20 +67,29 @@
           "shares": 2098,
           "cost": 100111.7,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "2610",
           "name": "華航",
-          "signalDate": "2026-11-05"
+          "signalDate": "2026-11-05",
+          "buyDate": "2026-11-06",
+          "buyPrice": 20.7,
+          "shares": 4830,
+          "cost": 100123,
+          "source": "realtime"
         },
         {
           "code": "1476",
           "name": "儒鴻",
-          "signalDate": "2026-11-05"
+          "signalDate": "2026-11-05",
+          "buyDate": "2026-11-06",
+          "buyPrice": 322.5,
+          "shares": 310,
+          "cost": 100117,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -374,13 +383,7 @@
           "source": "official"
         }
       ],
-      "pending": [
-        {
-          "code": "2006",
-          "name": "東和鋼鐵",
-          "signalDate": "2026-11-05"
-        }
-      ],
+      "pending": [],
       "closed": []
     }
   },
@@ -501,33 +504,25 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-05",
+    "date": "2026-11-06",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "6446",
-        "name": "藥華藥",
-        "price": 1270,
-        "shares": 78,
-        "date": "2026-11-05"
+        "code": "2610",
+        "name": "華航",
+        "price": 20.7,
+        "shares": 4830,
+        "date": "2026-11-06"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "9933",
-        "name": "中鼎",
-        "price": 47.65,
-        "shares": 2098,
-        "date": "2026-11-05"
-      },
-      {
-        "book": "mid",
-        "type": "cancel",
-        "code": "3356",
-        "name": "奇偶",
-        "reason": "持股已滿",
-        "date": "2026-11-05"
+        "code": "1476",
+        "name": "儒鴻",
+        "price": 322.5,
+        "shares": 310,
+        "date": "2026-11-06"
       },
       {
         "book": "mid",
@@ -535,7 +530,7 @@
         "code": "2006",
         "name": "東和鋼鐵",
         "reason": "持股已滿",
-        "date": "2026-11-05"
+        "date": "2026-11-06"
       }
     ]
   }
