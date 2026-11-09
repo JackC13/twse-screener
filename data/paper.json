@@ -57,25 +57,39 @@
           "shares": 310,
           "cost": 100117,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "6782",
           "name": "視陽",
-          "signalDate": "2026-11-06"
+          "signalDate": "2026-11-06",
+          "buyDate": "2026-11-09",
+          "buyPrice": 289,
+          "shares": 346,
+          "cost": 100136,
+          "source": "realtime"
         },
         {
           "code": "6757",
           "name": "台灣虎航",
-          "signalDate": "2026-11-06"
+          "signalDate": "2026-11-06",
+          "buyDate": "2026-11-09",
+          "buyPrice": 53.7,
+          "shares": 1862,
+          "cost": 100131.40000000001,
+          "source": "realtime"
         },
         {
           "code": "1477",
           "name": "聚陽",
-          "signalDate": "2026-11-06"
+          "signalDate": "2026-11-06",
+          "buyDate": "2026-11-09",
+          "buyPrice": 211.5,
+          "shares": 472,
+          "cost": 99970,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -398,15 +412,19 @@
           "shares": 2116,
           "cost": 100123,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "3703",
           "name": "欣陸",
-          "signalDate": "2026-11-06"
+          "signalDate": "2026-11-06",
+          "buyDate": "2026-11-09",
+          "buyPrice": 21.5,
+          "shares": 4651,
+          "cost": 100138.5,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2347",
@@ -587,33 +605,43 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-06",
+    "date": "2026-11-09",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "2610",
-        "name": "華航",
-        "price": 20.7,
-        "shares": 4830,
-        "date": "2026-11-06"
+        "code": "6782",
+        "name": "視陽",
+        "price": 289,
+        "shares": 346,
+        "date": "2026-11-09"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "1476",
-        "name": "儒鴻",
-        "price": 322.5,
-        "shares": 310,
-        "date": "2026-11-06"
+        "code": "6757",
+        "name": "台灣虎航",
+        "price": 53.7,
+        "shares": 1862,
+        "date": "2026-11-09"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "1477",
+        "name": "聚陽",
+        "price": 211.5,
+        "shares": 472,
+        "date": "2026-11-09"
       },
       {
         "book": "mid",
-        "type": "cancel",
-        "code": "2006",
-        "name": "東和鋼鐵",
-        "reason": "持股已滿",
-        "date": "2026-11-06"
+        "type": "buy",
+        "code": "3703",
+        "name": "欣陸",
+        "price": 21.5,
+        "shares": 4651,
+        "date": "2026-11-09"
       }
     ]
   }
