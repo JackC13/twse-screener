@@ -37,20 +37,29 @@
           "shares": 472,
           "cost": 99970,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "6443",
           "name": "元晶",
-          "signalDate": "2026-11-10"
+          "signalDate": "2026-11-10",
+          "buyDate": "2026-11-11",
+          "buyPrice": 26.6,
+          "shares": 3759,
+          "cost": 100131.40000000001,
+          "source": "realtime"
         },
         {
           "code": "2471",
           "name": "資通",
-          "signalDate": "2026-11-10"
+          "signalDate": "2026-11-10",
+          "buyDate": "2026-11-11",
+          "buyPrice": 55.8,
+          "shares": 1792,
+          "cost": 100135.59999999999,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -619,43 +628,25 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-09",
+    "date": "2026-11-11",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "6782",
-        "name": "視陽",
-        "price": 289,
-        "shares": 346,
-        "date": "2026-11-09"
+        "code": "6443",
+        "name": "元晶",
+        "price": 26.6,
+        "shares": 3759,
+        "date": "2026-11-11"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "6757",
-        "name": "台灣虎航",
-        "price": 53.7,
-        "shares": 1862,
-        "date": "2026-11-09"
-      },
-      {
-        "book": "short",
-        "type": "buy",
-        "code": "1477",
-        "name": "聚陽",
-        "price": 211.5,
-        "shares": 472,
-        "date": "2026-11-09"
-      },
-      {
-        "book": "mid",
-        "type": "buy",
-        "code": "3703",
-        "name": "欣陸",
-        "price": 21.5,
-        "shares": 4651,
-        "date": "2026-11-09"
+        "code": "2471",
+        "name": "資通",
+        "price": 55.8,
+        "shares": 1792,
+        "date": "2026-11-11"
       }
     ]
   }
