@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-10",
+  "lastDate": "2026-11-11",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -8,16 +8,6 @@
   "books": {
     "short": {
       "positions": [
-        {
-          "code": "9910",
-          "name": "豐泰",
-          "signalDate": "2026-10-27",
-          "buyDate": "2026-10-28",
-          "buyPrice": 70.5,
-          "shares": 1418,
-          "cost": 100111,
-          "source": "official"
-        },
         {
           "code": "2618",
           "name": "長榮航",
@@ -46,7 +36,7 @@
           "buyPrice": 26.6,
           "shares": 3759,
           "cost": 100131.40000000001,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "2471",
@@ -56,10 +46,26 @@
           "buyPrice": 55.8,
           "shares": 1792,
           "cost": 100135.59999999999,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "1528",
+          "name": "恩德",
+          "signalDate": "2026-11-11"
+        },
+        {
+          "code": "6757",
+          "name": "台灣虎航",
+          "signalDate": "2026-11-11"
+        },
+        {
+          "code": "1802",
+          "name": "台玻",
+          "signalDate": "2026-11-11"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -383,6 +389,23 @@
           "pnlPct": 9.78,
           "reason": "停利",
           "heldDays": 1
+        },
+        {
+          "code": "9910",
+          "name": "豐泰",
+          "signalDate": "2026-10-27",
+          "buyDate": "2026-10-28",
+          "buyPrice": 70.5,
+          "shares": 1418,
+          "cost": 100111,
+          "source": "official",
+          "sellDate": "2026-11-11",
+          "sellPrice": 67,
+          "proceeds": 94586,
+          "pnl": -5525,
+          "pnlPct": -5.52,
+          "reason": "到期",
+          "heldDays": 10
         }
       ]
     },
@@ -479,7 +502,18 @@
           "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "3209",
+          "name": "全科",
+          "signalDate": "2026-11-11"
+        },
+        {
+          "code": "3356",
+          "name": "奇偶",
+          "signalDate": "2026-11-11"
+        }
+      ],
       "closed": [
         {
           "code": "2347",
@@ -521,30 +555,30 @@
   "lastEvents": [
     {
       "book": "short",
-      "type": "sell",
-      "code": "6112",
-      "name": "邁達特",
-      "price": 57,
-      "pnl": 14269.399999999994,
-      "reason": "停利"
+      "type": "buy",
+      "code": "6443",
+      "name": "元晶",
+      "price": 26.6,
+      "shares": 3759,
+      "date": "2026-11-11"
+    },
+    {
+      "book": "short",
+      "type": "buy",
+      "code": "2471",
+      "name": "資通",
+      "price": 55.8,
+      "shares": 1792,
+      "date": "2026-11-11"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "2610",
-      "name": "華航",
-      "price": 22.8,
-      "pnl": 9515,
-      "reason": "停利"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "6757",
-      "name": "台灣虎航",
-      "price": 59.3,
-      "pnl": 9797.199999999983,
-      "reason": "停利"
+      "code": "9910",
+      "name": "豐泰",
+      "price": 67,
+      "pnl": -5525,
+      "reason": "到期"
     }
   ],
   "equity": [
@@ -625,6 +659,12 @@
       "short": -5.81,
       "mid": -6.65,
       "bench": -7.81
+    },
+    {
+      "date": "2026-11-11",
+      "short": -4.74,
+      "mid": -6.15,
+      "bench": -4.58
     }
   ],
   "openEvents": {
