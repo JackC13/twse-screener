@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-11",
+  "lastDate": "2026-11-12",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -39,16 +39,6 @@
           "source": "official"
         },
         {
-          "code": "2471",
-          "name": "資通",
-          "signalDate": "2026-11-10",
-          "buyDate": "2026-11-11",
-          "buyPrice": 55.8,
-          "shares": 1792,
-          "cost": 100135.59999999999,
-          "source": "official"
-        },
-        {
           "code": "1528",
           "name": "恩德",
           "signalDate": "2026-11-11",
@@ -56,7 +46,7 @@
           "buyPrice": 28.55,
           "shares": 3502,
           "cost": 100124.1,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "6757",
@@ -66,7 +56,7 @@
           "buyPrice": 58.5,
           "shares": 1709,
           "cost": 100118.5,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "1802",
@@ -76,10 +66,26 @@
           "buyPrice": 80.7,
           "shares": 1239,
           "cost": 100129.3,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "3701",
+          "name": "大眾控",
+          "signalDate": "2026-11-12"
+        },
+        {
+          "code": "3029",
+          "name": "零壹",
+          "signalDate": "2026-11-12"
+        },
+        {
+          "code": "7765",
+          "name": "中華資安",
+          "signalDate": "2026-11-12"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -420,6 +426,23 @@
           "pnlPct": -5.52,
           "reason": "到期",
           "heldDays": 10
+        },
+        {
+          "code": "2471",
+          "name": "資通",
+          "signalDate": "2026-11-10",
+          "buyDate": "2026-11-11",
+          "buyPrice": 55.8,
+          "shares": 1792,
+          "cost": 100135.59999999999,
+          "source": "official",
+          "sellDate": "2026-11-12",
+          "sellPrice": 64.7,
+          "proceeds": 115430.40000000001,
+          "pnl": 15294.800000000017,
+          "pnlPct": 15.27,
+          "reason": "停利",
+          "heldDays": 1
         }
       ]
     },
@@ -523,10 +546,21 @@
           "buyPrice": 47.6,
           "shares": 2100,
           "cost": 100102,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "3356",
+          "name": "奇偶",
+          "signalDate": "2026-11-12"
+        },
+        {
+          "code": "2006",
+          "name": "東和鋼鐵",
+          "signalDate": "2026-11-12"
+        }
+      ],
       "closed": [
         {
           "code": "2347",
@@ -569,29 +603,55 @@
     {
       "book": "short",
       "type": "buy",
-      "code": "6443",
-      "name": "元晶",
-      "price": 26.6,
-      "shares": 3759,
-      "date": "2026-11-11"
+      "code": "1528",
+      "name": "恩德",
+      "price": 28.55,
+      "shares": 3502,
+      "date": "2026-11-12"
     },
     {
       "book": "short",
       "type": "buy",
-      "code": "2471",
-      "name": "資通",
-      "price": 55.8,
-      "shares": 1792,
-      "date": "2026-11-11"
+      "code": "6757",
+      "name": "台灣虎航",
+      "price": 58.5,
+      "shares": 1709,
+      "date": "2026-11-12"
+    },
+    {
+      "book": "short",
+      "type": "buy",
+      "code": "1802",
+      "name": "台玻",
+      "price": 80.7,
+      "shares": 1239,
+      "date": "2026-11-12"
+    },
+    {
+      "book": "mid",
+      "type": "buy",
+      "code": "3209",
+      "name": "全科",
+      "price": 47.6,
+      "shares": 2100,
+      "date": "2026-11-12"
+    },
+    {
+      "book": "mid",
+      "type": "cancel",
+      "code": "3356",
+      "name": "奇偶",
+      "reason": "持股已滿",
+      "date": "2026-11-12"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "9910",
-      "name": "豐泰",
-      "price": 67,
-      "pnl": -5525,
-      "reason": "到期"
+      "code": "2471",
+      "name": "資通",
+      "price": 64.7,
+      "pnl": 15294.800000000017,
+      "reason": "停利"
     }
   ],
   "equity": [
@@ -678,6 +738,12 @@
       "short": -4.74,
       "mid": -6.15,
       "bench": -4.58
+    },
+    {
+      "date": "2026-11-12",
+      "short": -4.15,
+      "mid": -6.65,
+      "bench": -6.66
     }
   ],
   "openEvents": {
