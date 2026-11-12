@@ -47,25 +47,39 @@
           "shares": 1792,
           "cost": 100135.59999999999,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "1528",
           "name": "恩德",
-          "signalDate": "2026-11-11"
+          "signalDate": "2026-11-11",
+          "buyDate": "2026-11-12",
+          "buyPrice": 28.55,
+          "shares": 3502,
+          "cost": 100124.1,
+          "source": "realtime"
         },
         {
           "code": "6757",
           "name": "台灣虎航",
-          "signalDate": "2026-11-11"
+          "signalDate": "2026-11-11",
+          "buyDate": "2026-11-12",
+          "buyPrice": 58.5,
+          "shares": 1709,
+          "cost": 100118.5,
+          "source": "realtime"
         },
         {
           "code": "1802",
           "name": "台玻",
-          "signalDate": "2026-11-11"
+          "signalDate": "2026-11-11",
+          "buyDate": "2026-11-12",
+          "buyPrice": 80.7,
+          "shares": 1239,
+          "cost": 100129.3,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -500,20 +514,19 @@
           "shares": 4651,
           "cost": 100138.5,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "3209",
           "name": "全科",
-          "signalDate": "2026-11-11"
-        },
-        {
-          "code": "3356",
-          "name": "奇偶",
-          "signalDate": "2026-11-11"
+          "signalDate": "2026-11-11",
+          "buyDate": "2026-11-12",
+          "buyPrice": 47.6,
+          "shares": 2100,
+          "cost": 100102,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2347",
@@ -668,25 +681,51 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-11",
+    "date": "2026-11-12",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "6443",
-        "name": "元晶",
-        "price": 26.6,
-        "shares": 3759,
-        "date": "2026-11-11"
+        "code": "1528",
+        "name": "恩德",
+        "price": 28.55,
+        "shares": 3502,
+        "date": "2026-11-12"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "2471",
-        "name": "資通",
-        "price": 55.8,
-        "shares": 1792,
-        "date": "2026-11-11"
+        "code": "6757",
+        "name": "台灣虎航",
+        "price": 58.5,
+        "shares": 1709,
+        "date": "2026-11-12"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "1802",
+        "name": "台玻",
+        "price": 80.7,
+        "shares": 1239,
+        "date": "2026-11-12"
+      },
+      {
+        "book": "mid",
+        "type": "buy",
+        "code": "3209",
+        "name": "全科",
+        "price": 47.6,
+        "shares": 2100,
+        "date": "2026-11-12"
+      },
+      {
+        "book": "mid",
+        "type": "cancel",
+        "code": "3356",
+        "name": "奇偶",
+        "reason": "持股已滿",
+        "date": "2026-11-12"
       }
     ]
   }
