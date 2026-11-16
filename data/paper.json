@@ -77,25 +77,39 @@
           "shares": 396,
           "cost": 99934,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "3715",
           "name": "定穎投控",
-          "signalDate": "2026-11-13"
+          "signalDate": "2026-11-13",
+          "buyDate": "2026-11-16",
+          "buyPrice": 143,
+          "shares": 699,
+          "cost": 100099,
+          "source": "realtime"
         },
         {
           "code": "4916",
           "name": "事欣科",
-          "signalDate": "2026-11-13"
+          "signalDate": "2026-11-13",
+          "buyDate": "2026-11-16",
+          "buyPrice": 117,
+          "shares": 854,
+          "cost": 100060,
+          "source": "realtime"
         },
         {
           "code": "3701",
           "name": "大眾控",
-          "signalDate": "2026-11-13"
+          "signalDate": "2026-11-13",
+          "buyDate": "2026-11-16",
+          "buyPrice": 68.5,
+          "shares": 1459,
+          "cost": 100083.5,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -593,18 +607,7 @@
           "source": "official"
         }
       ],
-      "pending": [
-        {
-          "code": "1210",
-          "name": "大成",
-          "signalDate": "2026-11-13"
-        },
-        {
-          "code": "2069",
-          "name": "運錩",
-          "signalDate": "2026-11-13"
-        }
-      ],
+      "pending": [],
       "closed": [
         {
           "code": "2347",
@@ -805,50 +808,50 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-13",
+    "date": "2026-11-16",
     "events": [
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "3715",
+        "name": "定穎投控",
+        "price": 143,
+        "shares": 699,
+        "date": "2026-11-16"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "4916",
+        "name": "事欣科",
+        "price": 117,
+        "shares": 854,
+        "date": "2026-11-16"
+      },
       {
         "book": "short",
         "type": "buy",
         "code": "3701",
         "name": "大眾控",
-        "price": 75.9,
-        "shares": 1317,
-        "date": "2026-11-13"
-      },
-      {
-        "book": "short",
-        "type": "buy",
-        "code": "3029",
-        "name": "零壹",
-        "price": 136,
-        "shares": 735,
-        "date": "2026-11-13"
-      },
-      {
-        "book": "short",
-        "type": "buy",
-        "code": "7765",
-        "name": "中華資安",
-        "price": 252,
-        "shares": 396,
-        "date": "2026-11-13"
+        "price": 68.5,
+        "shares": 1459,
+        "date": "2026-11-16"
       },
       {
         "book": "mid",
         "type": "cancel",
-        "code": "3356",
-        "name": "奇偶",
+        "code": "1210",
+        "name": "大成",
         "reason": "持股已滿",
-        "date": "2026-11-13"
+        "date": "2026-11-16"
       },
       {
         "book": "mid",
         "type": "cancel",
-        "code": "2006",
-        "name": "東和鋼鐵",
+        "code": "2069",
+        "name": "運錩",
         "reason": "持股已滿",
-        "date": "2026-11-13"
+        "date": "2026-11-16"
       }
     ]
   }
