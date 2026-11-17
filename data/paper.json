@@ -57,25 +57,39 @@
           "shares": 699,
           "cost": 100099,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "4916",
           "name": "事欣科",
-          "signalDate": "2026-11-16"
+          "signalDate": "2026-11-16",
+          "buyDate": "2026-11-17",
+          "buyPrice": 102,
+          "shares": 980,
+          "cost": 100102,
+          "source": "realtime"
         },
         {
           "code": "6890",
           "name": "來億-KY",
-          "signalDate": "2026-11-16"
+          "signalDate": "2026-11-16",
+          "buyDate": "2026-11-17",
+          "buyPrice": 161.5,
+          "shares": 619,
+          "cost": 100110.5,
+          "source": "realtime"
         },
         {
           "code": "2355",
           "name": "敬鵬",
-          "signalDate": "2026-11-16"
+          "signalDate": "2026-11-16",
+          "buyDate": "2026-11-17",
+          "buyPrice": 58.8,
+          "shares": 1700,
+          "cost": 100102,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -658,13 +672,7 @@
           "source": "official"
         }
       ],
-      "pending": [
-        {
-          "code": "1210",
-          "name": "大成",
-          "signalDate": "2026-11-16"
-        }
-      ],
+      "pending": [],
       "closed": [
         {
           "code": "2347",
@@ -898,34 +906,34 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "events": [
-      {
-        "book": "short",
-        "type": "buy",
-        "code": "3715",
-        "name": "定穎投控",
-        "price": 143,
-        "shares": 699,
-        "date": "2026-11-16"
-      },
       {
         "book": "short",
         "type": "buy",
         "code": "4916",
         "name": "事欣科",
-        "price": 117,
-        "shares": 854,
-        "date": "2026-11-16"
+        "price": 102,
+        "shares": 980,
+        "date": "2026-11-17"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "3701",
-        "name": "大眾控",
-        "price": 68.5,
-        "shares": 1459,
-        "date": "2026-11-16"
+        "code": "6890",
+        "name": "來億-KY",
+        "price": 161.5,
+        "shares": 619,
+        "date": "2026-11-17"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "2355",
+        "name": "敬鵬",
+        "price": 58.8,
+        "shares": 1700,
+        "date": "2026-11-17"
       },
       {
         "book": "mid",
@@ -933,15 +941,7 @@
         "code": "1210",
         "name": "大成",
         "reason": "持股已滿",
-        "date": "2026-11-16"
-      },
-      {
-        "book": "mid",
-        "type": "cancel",
-        "code": "2069",
-        "name": "運錩",
-        "reason": "持股已滿",
-        "date": "2026-11-16"
+        "date": "2026-11-17"
       }
     ]
   }
