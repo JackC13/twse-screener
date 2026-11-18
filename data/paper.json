@@ -57,20 +57,29 @@
           "shares": 1700,
           "cost": 100102,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "7799",
           "name": "禾榮科",
-          "signalDate": "2026-11-17"
+          "signalDate": "2026-11-17",
+          "buyDate": "2026-11-18",
+          "buyPrice": 488,
+          "shares": 204,
+          "cost": 99693,
+          "source": "realtime"
         },
         {
           "code": "2597",
           "name": "潤弘",
-          "signalDate": "2026-11-17"
+          "signalDate": "2026-11-17",
+          "buyDate": "2026-11-18",
+          "buyPrice": 174.5,
+          "shares": 573,
+          "cost": 100130.5,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -918,42 +927,25 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "4916",
-        "name": "事欣科",
-        "price": 102,
-        "shares": 980,
-        "date": "2026-11-17"
+        "code": "7799",
+        "name": "禾榮科",
+        "price": 488,
+        "shares": 204,
+        "date": "2026-11-18"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "6890",
-        "name": "來億-KY",
-        "price": 161.5,
-        "shares": 619,
-        "date": "2026-11-17"
-      },
-      {
-        "book": "short",
-        "type": "buy",
-        "code": "2355",
-        "name": "敬鵬",
-        "price": 58.8,
-        "shares": 1700,
-        "date": "2026-11-17"
-      },
-      {
-        "book": "mid",
-        "type": "cancel",
-        "code": "1210",
-        "name": "大成",
-        "reason": "持股已滿",
-        "date": "2026-11-17"
+        "code": "2597",
+        "name": "潤弘",
+        "price": 174.5,
+        "shares": 573,
+        "date": "2026-11-18"
       }
     ]
   }
