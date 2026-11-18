@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-17",
+  "lastDate": "2026-11-18",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -26,16 +26,6 @@
           "buyPrice": 58.5,
           "shares": 1709,
           "cost": 100118.5,
-          "source": "official"
-        },
-        {
-          "code": "4916",
-          "name": "事欣科",
-          "signalDate": "2026-11-16",
-          "buyDate": "2026-11-17",
-          "buyPrice": 102,
-          "shares": 980,
-          "cost": 100102,
           "source": "official"
         },
         {
@@ -66,7 +56,7 @@
           "buyPrice": 488,
           "shares": 204,
           "cost": 99693,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "2597",
@@ -76,10 +66,16 @@
           "buyPrice": 174.5,
           "shares": 573,
           "cost": 100130.5,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "2323",
+          "name": "中環",
+          "signalDate": "2026-11-18"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -607,6 +603,23 @@
           "pnlPct": -11.36,
           "reason": "停損",
           "heldDays": 1
+        },
+        {
+          "code": "4916",
+          "name": "事欣科",
+          "signalDate": "2026-11-16",
+          "buyDate": "2026-11-17",
+          "buyPrice": 102,
+          "shares": 980,
+          "cost": 100102,
+          "source": "official",
+          "sellDate": "2026-11-18",
+          "sellPrice": 111,
+          "proceeds": 108299,
+          "pnl": 8197,
+          "pnlPct": 8.19,
+          "reason": "停利",
+          "heldDays": 1
         }
       ]
     },
@@ -713,7 +726,13 @@
           "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "2636",
+          "name": "台驊控股",
+          "signalDate": "2026-11-18"
+        }
+      ],
       "closed": [
         {
           "code": "2347",
@@ -756,64 +775,29 @@
     {
       "book": "short",
       "type": "buy",
+      "code": "7799",
+      "name": "禾榮科",
+      "price": 488,
+      "shares": 204,
+      "date": "2026-11-18"
+    },
+    {
+      "book": "short",
+      "type": "buy",
+      "code": "2597",
+      "name": "潤弘",
+      "price": 174.5,
+      "shares": 573,
+      "date": "2026-11-18"
+    },
+    {
+      "book": "short",
+      "type": "sell",
       "code": "4916",
       "name": "事欣科",
-      "price": 102,
-      "shares": 980,
-      "date": "2026-11-17"
-    },
-    {
-      "book": "short",
-      "type": "buy",
-      "code": "6890",
-      "name": "來億-KY",
-      "price": 161.5,
-      "shares": 619,
-      "date": "2026-11-17"
-    },
-    {
-      "book": "short",
-      "type": "buy",
-      "code": "2355",
-      "name": "敬鵬",
-      "price": 58.8,
-      "shares": 1700,
-      "date": "2026-11-17"
-    },
-    {
-      "book": "mid",
-      "type": "cancel",
-      "code": "1210",
-      "name": "大成",
-      "reason": "持股已滿",
-      "date": "2026-11-17"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "6443",
-      "name": "元晶",
-      "price": 25.25,
-      "pnl": -5635.650000000009,
-      "reason": "停損"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "3029",
-      "name": "零壹",
-      "price": 123,
-      "pnl": -10096,
-      "reason": "停損"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "3715",
-      "name": "定穎投控",
-      "price": 127.5,
-      "pnl": -11369.5,
-      "reason": "停損"
+      "price": 111,
+      "pnl": 8197,
+      "reason": "停利"
     }
   ],
   "equity": [
@@ -924,6 +908,12 @@
       "short": -9.67,
       "mid": -6.99,
       "bench": -13.08
+    },
+    {
+      "date": "2026-11-18",
+      "short": -9.3,
+      "mid": -6.59,
+      "bench": -12.99
     }
   ],
   "openEvents": {
