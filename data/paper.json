@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-18",
+  "lastDate": "2026-11-19",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -19,46 +19,6 @@
           "source": "official"
         },
         {
-          "code": "6757",
-          "name": "台灣虎航",
-          "signalDate": "2026-11-11",
-          "buyDate": "2026-11-12",
-          "buyPrice": 58.5,
-          "shares": 1709,
-          "cost": 100118.5,
-          "source": "official"
-        },
-        {
-          "code": "6890",
-          "name": "來億-KY",
-          "signalDate": "2026-11-16",
-          "buyDate": "2026-11-17",
-          "buyPrice": 161.5,
-          "shares": 619,
-          "cost": 100110.5,
-          "source": "official"
-        },
-        {
-          "code": "2355",
-          "name": "敬鵬",
-          "signalDate": "2026-11-16",
-          "buyDate": "2026-11-17",
-          "buyPrice": 58.8,
-          "shares": 1700,
-          "cost": 100102,
-          "source": "official"
-        },
-        {
-          "code": "7799",
-          "name": "禾榮科",
-          "signalDate": "2026-11-17",
-          "buyDate": "2026-11-18",
-          "buyPrice": 488,
-          "shares": 204,
-          "cost": 99693,
-          "source": "official"
-        },
-        {
           "code": "2597",
           "name": "潤弘",
           "signalDate": "2026-11-17",
@@ -67,19 +27,25 @@
           "shares": 573,
           "cost": 100130.5,
           "source": "official"
-        },
-        {
-          "code": "2323",
-          "name": "中環",
-          "signalDate": "2026-11-18",
-          "buyDate": "2026-11-19",
-          "buyPrice": 11.85,
-          "shares": 8438,
-          "cost": 100132.3,
-          "source": "realtime"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "6782",
+          "name": "視陽",
+          "signalDate": "2026-11-19"
+        },
+        {
+          "code": "5388",
+          "name": "中磊",
+          "signalDate": "2026-11-19"
+        },
+        {
+          "code": "2207",
+          "name": "和泰車",
+          "signalDate": "2026-11-19"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -624,6 +590,91 @@
           "pnlPct": 8.19,
           "reason": "停利",
           "heldDays": 1
+        },
+        {
+          "code": "6757",
+          "name": "台灣虎航",
+          "signalDate": "2026-11-11",
+          "buyDate": "2026-11-12",
+          "buyPrice": 58.5,
+          "shares": 1709,
+          "cost": 100118.5,
+          "source": "official",
+          "sellDate": "2026-11-19",
+          "sellPrice": 54.6,
+          "proceeds": 92900.40000000001,
+          "pnl": -7218.099999999991,
+          "pnlPct": -7.21,
+          "reason": "停損",
+          "heldDays": 5
+        },
+        {
+          "code": "6890",
+          "name": "來億-KY",
+          "signalDate": "2026-11-16",
+          "buyDate": "2026-11-17",
+          "buyPrice": 161.5,
+          "shares": 619,
+          "cost": 100110.5,
+          "source": "official",
+          "sellDate": "2026-11-19",
+          "sellPrice": 151.5,
+          "proceeds": 93364.5,
+          "pnl": -6746,
+          "pnlPct": -6.74,
+          "reason": "停損",
+          "heldDays": 2
+        },
+        {
+          "code": "2355",
+          "name": "敬鵬",
+          "signalDate": "2026-11-16",
+          "buyDate": "2026-11-17",
+          "buyPrice": 58.8,
+          "shares": 1700,
+          "cost": 100102,
+          "source": "official",
+          "sellDate": "2026-11-19",
+          "sellPrice": 53.3,
+          "proceeds": 90210,
+          "pnl": -9892,
+          "pnlPct": -9.88,
+          "reason": "停損",
+          "heldDays": 2
+        },
+        {
+          "code": "7799",
+          "name": "禾榮科",
+          "signalDate": "2026-11-17",
+          "buyDate": "2026-11-18",
+          "buyPrice": 488,
+          "shares": 204,
+          "cost": 99693,
+          "source": "official",
+          "sellDate": "2026-11-19",
+          "sellPrice": 434,
+          "proceeds": 88145,
+          "pnl": -11548,
+          "pnlPct": -11.58,
+          "reason": "停損",
+          "heldDays": 1
+        },
+        {
+          "code": "2323",
+          "name": "中環",
+          "signalDate": "2026-11-18",
+          "buyDate": "2026-11-19",
+          "buyPrice": 11.85,
+          "shares": 8438,
+          "cost": 100132.3,
+          "source": "official",
+          "sellDate": "2026-11-19",
+          "sellPrice": 11.05,
+          "proceeds": 92828.90000000001,
+          "pnl": -7303.399999999994,
+          "pnlPct": -7.29,
+          "reason": "停損",
+          "heldDays": 0
         }
       ]
     },
@@ -773,29 +824,64 @@
     {
       "book": "short",
       "type": "buy",
-      "code": "7799",
-      "name": "禾榮科",
-      "price": 488,
-      "shares": 204,
-      "date": "2026-11-18"
+      "code": "2323",
+      "name": "中環",
+      "price": 11.85,
+      "shares": 8438,
+      "date": "2026-11-19"
     },
     {
-      "book": "short",
-      "type": "buy",
-      "code": "2597",
-      "name": "潤弘",
-      "price": 174.5,
-      "shares": 573,
-      "date": "2026-11-18"
+      "book": "mid",
+      "type": "cancel",
+      "code": "2636",
+      "name": "台驊控股",
+      "reason": "持股已滿",
+      "date": "2026-11-19"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "4916",
-      "name": "事欣科",
-      "price": 111,
-      "pnl": 8197,
-      "reason": "停利"
+      "code": "6757",
+      "name": "台灣虎航",
+      "price": 54.6,
+      "pnl": -7218.099999999991,
+      "reason": "停損"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "6890",
+      "name": "來億-KY",
+      "price": 151.5,
+      "pnl": -6746,
+      "reason": "停損"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "2355",
+      "name": "敬鵬",
+      "price": 53.3,
+      "pnl": -9892,
+      "reason": "停損"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "7799",
+      "name": "禾榮科",
+      "price": 434,
+      "pnl": -11548,
+      "reason": "停損"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "2323",
+      "name": "中環",
+      "price": 11.05,
+      "pnl": -7303.399999999994,
+      "reason": "停損"
     }
   ],
   "equity": [
@@ -912,6 +998,12 @@
       "short": -9.3,
       "mid": -6.59,
       "bench": -12.99
+    },
+    {
+      "date": "2026-11-19",
+      "short": -12.09,
+      "mid": -8.6,
+      "bench": -16.6
     }
   ],
   "openEvents": {
