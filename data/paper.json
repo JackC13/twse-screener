@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-19",
+  "lastDate": "2026-11-20",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -36,7 +36,7 @@
           "buyPrice": 283.5,
           "shares": 352,
           "cost": 99934,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "5388",
@@ -46,20 +46,21 @@
           "buyPrice": 70.8,
           "shares": 1412,
           "cost": 100111.59999999999,
-          "source": "realtime"
-        },
-        {
-          "code": "2207",
-          "name": "和泰車",
-          "signalDate": "2026-11-19",
-          "buyDate": "2026-11-20",
-          "buyPrice": 549,
-          "shares": 182,
-          "cost": 100060,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "5522",
+          "name": "遠雄",
+          "signalDate": "2026-11-20"
+        },
+        {
+          "code": "9933",
+          "name": "中鼎",
+          "signalDate": "2026-11-20"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -689,6 +690,23 @@
           "pnlPct": -7.29,
           "reason": "停損",
           "heldDays": 0
+        },
+        {
+          "code": "2207",
+          "name": "和泰車",
+          "signalDate": "2026-11-19",
+          "buyDate": "2026-11-20",
+          "buyPrice": 549,
+          "shares": 182,
+          "cost": 100060,
+          "source": "official",
+          "sellDate": "2026-11-20",
+          "sellPrice": 516,
+          "proceeds": 93498,
+          "pnl": -6562,
+          "pnlPct": -6.56,
+          "reason": "停損",
+          "heldDays": 0
         }
       ]
     },
@@ -712,16 +730,6 @@
           "buyPrice": 56.2,
           "shares": 1779,
           "cost": 100121.8,
-          "source": "official"
-        },
-        {
-          "code": "2520",
-          "name": "冠德",
-          "signalDate": "2026-10-22",
-          "buyDate": "2026-10-27",
-          "buyPrice": 37.6,
-          "shares": 2659,
-          "cost": 100120.40000000001,
           "source": "official"
         },
         {
@@ -752,26 +760,6 @@
           "buyPrice": 261,
           "shares": 383,
           "cost": 100105,
-          "source": "official"
-        },
-        {
-          "code": "2393",
-          "name": "億光",
-          "signalDate": "2026-10-29",
-          "buyDate": "2026-10-30",
-          "buyPrice": 68.8,
-          "shares": 1453,
-          "cost": 100108.4,
-          "source": "official"
-        },
-        {
-          "code": "2031",
-          "name": "新光鋼",
-          "signalDate": "2026-10-29",
-          "buyDate": "2026-10-30",
-          "buyPrice": 47.25,
-          "shares": 2116,
-          "cost": 100123,
           "source": "official"
         },
         {
@@ -830,6 +818,57 @@
           "pnlPct": -17.12,
           "reason": "停損",
           "heldDays": 6
+        },
+        {
+          "code": "2520",
+          "name": "冠德",
+          "signalDate": "2026-10-22",
+          "buyDate": "2026-10-27",
+          "buyPrice": 37.6,
+          "shares": 2659,
+          "cost": 100120.40000000001,
+          "source": "official",
+          "sellDate": "2026-11-20",
+          "sellPrice": 30.8,
+          "proceeds": 81536.2,
+          "pnl": -18584.20000000001,
+          "pnlPct": -18.56,
+          "reason": "停損",
+          "heldDays": 18
+        },
+        {
+          "code": "2393",
+          "name": "億光",
+          "signalDate": "2026-10-29",
+          "buyDate": "2026-10-30",
+          "buyPrice": 68.8,
+          "shares": 1453,
+          "cost": 100108.4,
+          "source": "official",
+          "sellDate": "2026-11-20",
+          "sellPrice": 56.1,
+          "proceeds": 81153.3,
+          "pnl": -18955.09999999999,
+          "pnlPct": -18.93,
+          "reason": "停損",
+          "heldDays": 15
+        },
+        {
+          "code": "2031",
+          "name": "新光鋼",
+          "signalDate": "2026-10-29",
+          "buyDate": "2026-10-30",
+          "buyPrice": 47.25,
+          "shares": 2116,
+          "cost": 100123,
+          "source": "official",
+          "sellDate": "2026-11-20",
+          "sellPrice": 38.65,
+          "proceeds": 81422.4,
+          "pnl": -18700.600000000006,
+          "pnlPct": -18.68,
+          "reason": "停損",
+          "heldDays": 15
         }
       ]
     }
@@ -838,63 +877,64 @@
     {
       "book": "short",
       "type": "buy",
-      "code": "2323",
-      "name": "中環",
-      "price": 11.85,
-      "shares": 8438,
-      "date": "2026-11-19"
+      "code": "6782",
+      "name": "視陽",
+      "price": 283.5,
+      "shares": 352,
+      "date": "2026-11-20"
+    },
+    {
+      "book": "short",
+      "type": "buy",
+      "code": "5388",
+      "name": "中磊",
+      "price": 70.8,
+      "shares": 1412,
+      "date": "2026-11-20"
+    },
+    {
+      "book": "short",
+      "type": "buy",
+      "code": "2207",
+      "name": "和泰車",
+      "price": 549,
+      "shares": 182,
+      "date": "2026-11-20"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "2207",
+      "name": "和泰車",
+      "price": 516,
+      "pnl": -6562,
+      "reason": "停損"
     },
     {
       "book": "mid",
-      "type": "cancel",
-      "code": "2636",
-      "name": "台驊控股",
-      "reason": "持股已滿",
-      "date": "2026-11-19"
-    },
-    {
-      "book": "short",
       "type": "sell",
-      "code": "6757",
-      "name": "台灣虎航",
-      "price": 54.6,
-      "pnl": -7218.099999999991,
+      "code": "2520",
+      "name": "冠德",
+      "price": 30.8,
+      "pnl": -18584.20000000001,
       "reason": "停損"
     },
     {
-      "book": "short",
+      "book": "mid",
       "type": "sell",
-      "code": "6890",
-      "name": "來億-KY",
-      "price": 151.5,
-      "pnl": -6746,
+      "code": "2393",
+      "name": "億光",
+      "price": 56.1,
+      "pnl": -18955.09999999999,
       "reason": "停損"
     },
     {
-      "book": "short",
+      "book": "mid",
       "type": "sell",
-      "code": "2355",
-      "name": "敬鵬",
-      "price": 53.3,
-      "pnl": -9892,
-      "reason": "停損"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "7799",
-      "name": "禾榮科",
-      "price": 434,
-      "pnl": -11548,
-      "reason": "停損"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "2323",
-      "name": "中環",
-      "price": 11.05,
-      "pnl": -7303.399999999994,
+      "code": "2031",
+      "name": "新光鋼",
+      "price": 38.65,
+      "pnl": -18700.600000000006,
       "reason": "停損"
     }
   ],
@@ -1018,6 +1058,12 @@
       "short": -12.09,
       "mid": -8.6,
       "bench": -16.6
+    },
+    {
+      "date": "2026-11-20",
+      "short": -13.7,
+      "mid": -13.36,
+      "bench": -21.91
     }
   ],
   "openEvents": {
