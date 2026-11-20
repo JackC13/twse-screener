@@ -27,25 +27,39 @@
           "shares": 573,
           "cost": 100130.5,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "6782",
           "name": "視陽",
-          "signalDate": "2026-11-19"
+          "signalDate": "2026-11-19",
+          "buyDate": "2026-11-20",
+          "buyPrice": 283.5,
+          "shares": 352,
+          "cost": 99934,
+          "source": "realtime"
         },
         {
           "code": "5388",
           "name": "中磊",
-          "signalDate": "2026-11-19"
+          "signalDate": "2026-11-19",
+          "buyDate": "2026-11-20",
+          "buyPrice": 70.8,
+          "shares": 1412,
+          "cost": 100111.59999999999,
+          "source": "realtime"
         },
         {
           "code": "2207",
           "name": "和泰車",
-          "signalDate": "2026-11-19"
+          "signalDate": "2026-11-19",
+          "buyDate": "2026-11-20",
+          "buyPrice": 549,
+          "shares": 182,
+          "cost": 100060,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -1007,24 +1021,34 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-19",
+    "date": "2026-11-20",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "2323",
-        "name": "中環",
-        "price": 11.85,
-        "shares": 8438,
-        "date": "2026-11-19"
+        "code": "6782",
+        "name": "視陽",
+        "price": 283.5,
+        "shares": 352,
+        "date": "2026-11-20"
       },
       {
-        "book": "mid",
-        "type": "cancel",
-        "code": "2636",
-        "name": "台驊控股",
-        "reason": "持股已滿",
-        "date": "2026-11-19"
+        "book": "short",
+        "type": "buy",
+        "code": "5388",
+        "name": "中磊",
+        "price": 70.8,
+        "shares": 1412,
+        "date": "2026-11-20"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "2207",
+        "name": "和泰車",
+        "price": 549,
+        "shares": 182,
+        "date": "2026-11-20"
       }
     ]
   }
