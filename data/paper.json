@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-20",
+  "lastDate": "2026-11-23",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -8,16 +8,6 @@
   "books": {
     "short": {
       "positions": [
-        {
-          "code": "1477",
-          "name": "聚陽",
-          "signalDate": "2026-11-06",
-          "buyDate": "2026-11-09",
-          "buyPrice": 211.5,
-          "shares": 472,
-          "cost": 99970,
-          "source": "official"
-        },
         {
           "code": "2597",
           "name": "潤弘",
@@ -56,7 +46,7 @@
           "buyPrice": 61.7,
           "shares": 1620,
           "cost": 100096,
-          "source": "realtime"
+          "source": "official"
         },
         {
           "code": "9933",
@@ -66,10 +56,16 @@
           "buyPrice": 49.75,
           "shares": 2010,
           "cost": 100139.5,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "2412",
+          "name": "中華電",
+          "signalDate": "2026-11-23"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -716,6 +712,23 @@
           "pnlPct": -6.56,
           "reason": "停損",
           "heldDays": 0
+        },
+        {
+          "code": "1477",
+          "name": "聚陽",
+          "signalDate": "2026-11-06",
+          "buyDate": "2026-11-09",
+          "buyPrice": 211.5,
+          "shares": 472,
+          "cost": 99970,
+          "source": "official",
+          "sellDate": "2026-11-23",
+          "sellPrice": 221.5,
+          "proceeds": 104087,
+          "pnl": 4117,
+          "pnlPct": 4.12,
+          "reason": "到期",
+          "heldDays": 10
         }
       ]
     },
@@ -886,65 +899,29 @@
     {
       "book": "short",
       "type": "buy",
-      "code": "6782",
-      "name": "視陽",
-      "price": 283.5,
-      "shares": 352,
-      "date": "2026-11-20"
+      "code": "5522",
+      "name": "遠雄",
+      "price": 61.7,
+      "shares": 1620,
+      "date": "2026-11-23"
     },
     {
       "book": "short",
       "type": "buy",
-      "code": "5388",
-      "name": "中磊",
-      "price": 70.8,
-      "shares": 1412,
-      "date": "2026-11-20"
-    },
-    {
-      "book": "short",
-      "type": "buy",
-      "code": "2207",
-      "name": "和泰車",
-      "price": 549,
-      "shares": 182,
-      "date": "2026-11-20"
+      "code": "9933",
+      "name": "中鼎",
+      "price": 49.75,
+      "shares": 2010,
+      "date": "2026-11-23"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "2207",
-      "name": "和泰車",
-      "price": 516,
-      "pnl": -6562,
-      "reason": "停損"
-    },
-    {
-      "book": "mid",
-      "type": "sell",
-      "code": "2520",
-      "name": "冠德",
-      "price": 30.8,
-      "pnl": -18584.20000000001,
-      "reason": "停損"
-    },
-    {
-      "book": "mid",
-      "type": "sell",
-      "code": "2393",
-      "name": "億光",
-      "price": 56.1,
-      "pnl": -18955.09999999999,
-      "reason": "停損"
-    },
-    {
-      "book": "mid",
-      "type": "sell",
-      "code": "2031",
-      "name": "新光鋼",
-      "price": 38.65,
-      "pnl": -18700.600000000006,
-      "reason": "停損"
+      "code": "1477",
+      "name": "聚陽",
+      "price": 221.5,
+      "pnl": 4117,
+      "reason": "到期"
     }
   ],
   "equity": [
@@ -1073,6 +1050,12 @@
       "short": -13.7,
       "mid": -13.36,
       "bench": -21.91
+    },
+    {
+      "date": "2026-11-23",
+      "short": -12.91,
+      "mid": -13.54,
+      "bench": -19.56
     }
   ],
   "openEvents": {
