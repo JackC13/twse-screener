@@ -47,20 +47,29 @@
           "shares": 1412,
           "cost": 100111.59999999999,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "5522",
           "name": "遠雄",
-          "signalDate": "2026-11-20"
+          "signalDate": "2026-11-20",
+          "buyDate": "2026-11-23",
+          "buyPrice": 61.7,
+          "shares": 1620,
+          "cost": 100096,
+          "source": "realtime"
         },
         {
           "code": "9933",
           "name": "中鼎",
-          "signalDate": "2026-11-20"
+          "signalDate": "2026-11-20",
+          "buyDate": "2026-11-23",
+          "buyPrice": 49.75,
+          "shares": 2010,
+          "cost": 100139.5,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -1067,34 +1076,25 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-20",
+    "date": "2026-11-23",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "6782",
-        "name": "視陽",
-        "price": 283.5,
-        "shares": 352,
-        "date": "2026-11-20"
+        "code": "5522",
+        "name": "遠雄",
+        "price": 61.7,
+        "shares": 1620,
+        "date": "2026-11-23"
       },
       {
         "book": "short",
         "type": "buy",
-        "code": "5388",
-        "name": "中磊",
-        "price": 70.8,
-        "shares": 1412,
-        "date": "2026-11-20"
-      },
-      {
-        "book": "short",
-        "type": "buy",
-        "code": "2207",
-        "name": "和泰車",
-        "price": 549,
-        "shares": 182,
-        "date": "2026-11-20"
+        "code": "9933",
+        "name": "中鼎",
+        "price": 49.75,
+        "shares": 2010,
+        "date": "2026-11-23"
       }
     ]
   }
