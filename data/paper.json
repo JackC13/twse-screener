@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-23",
+  "lastDate": "2026-11-24",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -8,16 +8,6 @@
   "books": {
     "short": {
       "positions": [
-        {
-          "code": "2597",
-          "name": "潤弘",
-          "signalDate": "2026-11-17",
-          "buyDate": "2026-11-18",
-          "buyPrice": 174.5,
-          "shares": 573,
-          "cost": 100130.5,
-          "source": "official"
-        },
         {
           "code": "6782",
           "name": "視陽",
@@ -49,16 +39,6 @@
           "source": "official"
         },
         {
-          "code": "9933",
-          "name": "中鼎",
-          "signalDate": "2026-11-20",
-          "buyDate": "2026-11-23",
-          "buyPrice": 49.75,
-          "shares": 2010,
-          "cost": 100139.5,
-          "source": "official"
-        },
-        {
           "code": "2412",
           "name": "中華電",
           "signalDate": "2026-11-23",
@@ -66,10 +46,26 @@
           "buyPrice": 162,
           "shares": 617,
           "cost": 100096,
-          "source": "realtime"
+          "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "2618",
+          "name": "長榮航",
+          "signalDate": "2026-11-24"
+        },
+        {
+          "code": "3023",
+          "name": "信邦",
+          "signalDate": "2026-11-24"
+        },
+        {
+          "code": "1229",
+          "name": "聯華",
+          "signalDate": "2026-11-24"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -733,6 +729,40 @@
           "pnlPct": 4.12,
           "reason": "到期",
           "heldDays": 10
+        },
+        {
+          "code": "2597",
+          "name": "潤弘",
+          "signalDate": "2026-11-17",
+          "buyDate": "2026-11-18",
+          "buyPrice": 174.5,
+          "shares": 573,
+          "cost": 100130.5,
+          "source": "official",
+          "sellDate": "2026-11-24",
+          "sellPrice": 192,
+          "proceeds": 109530,
+          "pnl": 9399.5,
+          "pnlPct": 9.39,
+          "reason": "停利",
+          "heldDays": 4
+        },
+        {
+          "code": "9933",
+          "name": "中鼎",
+          "signalDate": "2026-11-20",
+          "buyDate": "2026-11-23",
+          "buyPrice": 49.75,
+          "shares": 2010,
+          "cost": 100139.5,
+          "source": "official",
+          "sellDate": "2026-11-24",
+          "sellPrice": 54,
+          "proceeds": 108061,
+          "pnl": 7921.5,
+          "pnlPct": 7.91,
+          "reason": "停利",
+          "heldDays": 1
         }
       ]
     },
@@ -809,7 +839,18 @@
           "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "1808",
+          "name": "潤隆",
+          "signalDate": "2026-11-24"
+        },
+        {
+          "code": "2636",
+          "name": "台驊控股",
+          "signalDate": "2026-11-24"
+        }
+      ],
       "closed": [
         {
           "code": "2347",
@@ -903,29 +944,29 @@
     {
       "book": "short",
       "type": "buy",
-      "code": "5522",
-      "name": "遠雄",
-      "price": 61.7,
-      "shares": 1620,
-      "date": "2026-11-23"
-    },
-    {
-      "book": "short",
-      "type": "buy",
-      "code": "9933",
-      "name": "中鼎",
-      "price": 49.75,
-      "shares": 2010,
-      "date": "2026-11-23"
+      "code": "2412",
+      "name": "中華電",
+      "price": 162,
+      "shares": 617,
+      "date": "2026-11-24"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "1477",
-      "name": "聚陽",
-      "price": 221.5,
-      "pnl": 4117,
-      "reason": "到期"
+      "code": "2597",
+      "name": "潤弘",
+      "price": 192,
+      "pnl": 9399.5,
+      "reason": "停利"
+    },
+    {
+      "book": "short",
+      "type": "sell",
+      "code": "9933",
+      "name": "中鼎",
+      "price": 54,
+      "pnl": 7921.5,
+      "reason": "停利"
     }
   ],
   "equity": [
@@ -1060,6 +1101,12 @@
       "short": -12.91,
       "mid": -13.54,
       "bench": -19.56
+    },
+    {
+      "date": "2026-11-24",
+      "short": -10.62,
+      "mid": -9.64,
+      "bench": -11.51
     }
   ],
   "openEvents": {
