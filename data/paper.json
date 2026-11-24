@@ -57,15 +57,19 @@
           "shares": 2010,
           "cost": 100139.5,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "2412",
           "name": "中華電",
-          "signalDate": "2026-11-23"
+          "signalDate": "2026-11-23",
+          "buyDate": "2026-11-24",
+          "buyPrice": 162,
+          "shares": 617,
+          "cost": 100096,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -1059,25 +1063,16 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-23",
+    "date": "2026-11-24",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "5522",
-        "name": "遠雄",
-        "price": 61.7,
-        "shares": 1620,
-        "date": "2026-11-23"
-      },
-      {
-        "book": "short",
-        "type": "buy",
-        "code": "9933",
-        "name": "中鼎",
-        "price": 49.75,
-        "shares": 2010,
-        "date": "2026-11-23"
+        "code": "2412",
+        "name": "中華電",
+        "price": 162,
+        "shares": 617,
+        "date": "2026-11-24"
       }
     ]
   }
