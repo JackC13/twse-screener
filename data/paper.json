@@ -47,25 +47,39 @@
           "shares": 617,
           "cost": 100096,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "2618",
           "name": "長榮航",
-          "signalDate": "2026-11-24"
+          "signalDate": "2026-11-24",
+          "buyDate": "2026-11-25",
+          "buyPrice": 47,
+          "shares": 2127,
+          "cost": 100111,
+          "source": "realtime"
         },
         {
           "code": "3023",
           "name": "信邦",
-          "signalDate": "2026-11-24"
+          "signalDate": "2026-11-24",
+          "buyDate": "2026-11-25",
+          "buyPrice": 276,
+          "shares": 362,
+          "cost": 100054,
+          "source": "realtime"
         },
         {
           "code": "1229",
           "name": "聯華",
-          "signalDate": "2026-11-24"
+          "signalDate": "2026-11-24",
+          "buyDate": "2026-11-25",
+          "buyPrice": 40.1,
+          "shares": 2493,
+          "cost": 100111.3,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2324",
@@ -837,20 +851,29 @@
           "shares": 2100,
           "cost": 100102,
           "source": "official"
-        }
-      ],
-      "pending": [
+        },
         {
           "code": "1808",
           "name": "潤隆",
-          "signalDate": "2026-11-24"
+          "signalDate": "2026-11-24",
+          "buyDate": "2026-11-25",
+          "buyPrice": 34.5,
+          "shares": 2898,
+          "cost": 100123,
+          "source": "realtime"
         },
         {
           "code": "2636",
           "name": "台驊控股",
-          "signalDate": "2026-11-24"
+          "signalDate": "2026-11-24",
+          "buyDate": "2026-11-25",
+          "buyPrice": 69.4,
+          "shares": 1440,
+          "cost": 100078.00000000001,
+          "source": "realtime"
         }
       ],
+      "pending": [],
       "closed": [
         {
           "code": "2347",
@@ -1110,16 +1133,52 @@
     }
   ],
   "openEvents": {
-    "date": "2026-11-24",
+    "date": "2026-11-25",
     "events": [
       {
         "book": "short",
         "type": "buy",
-        "code": "2412",
-        "name": "中華電",
-        "price": 162,
-        "shares": 617,
-        "date": "2026-11-24"
+        "code": "2618",
+        "name": "長榮航",
+        "price": 47,
+        "shares": 2127,
+        "date": "2026-11-25"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "3023",
+        "name": "信邦",
+        "price": 276,
+        "shares": 362,
+        "date": "2026-11-25"
+      },
+      {
+        "book": "short",
+        "type": "buy",
+        "code": "1229",
+        "name": "聯華",
+        "price": 40.1,
+        "shares": 2493,
+        "date": "2026-11-25"
+      },
+      {
+        "book": "mid",
+        "type": "buy",
+        "code": "1808",
+        "name": "潤隆",
+        "price": 34.5,
+        "shares": 2898,
+        "date": "2026-11-25"
+      },
+      {
+        "book": "mid",
+        "type": "buy",
+        "code": "2636",
+        "name": "台驊控股",
+        "price": 69.4,
+        "shares": 1440,
+        "date": "2026-11-25"
       }
     ]
   }
