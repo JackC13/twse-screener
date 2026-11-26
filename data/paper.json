@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-25",
+  "lastDate": "2026-11-26",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -8,16 +8,6 @@
   "books": {
     "short": {
       "positions": [
-        {
-          "code": "6782",
-          "name": "視陽",
-          "signalDate": "2026-11-19",
-          "buyDate": "2026-11-20",
-          "buyPrice": 283.5,
-          "shares": 352,
-          "cost": 99934,
-          "source": "official"
-        },
         {
           "code": "5522",
           "name": "遠雄",
@@ -784,6 +774,23 @@
           "pnlPct": -7.6,
           "reason": "停損",
           "heldDays": 3
+        },
+        {
+          "code": "6782",
+          "name": "視陽",
+          "signalDate": "2026-11-19",
+          "buyDate": "2026-11-20",
+          "buyPrice": 283.5,
+          "shares": 352,
+          "cost": 99934,
+          "source": "official",
+          "sellDate": "2026-11-26",
+          "sellPrice": 310.5,
+          "proceeds": 108814,
+          "pnl": 8880,
+          "pnlPct": 8.89,
+          "reason": "停利",
+          "heldDays": 4
         }
       ]
     },
@@ -887,7 +894,7 @@
           "buyPrice": 52,
           "shares": 1923,
           "cost": 100138,
-          "source": "realtime"
+          "source": "official"
         }
       ],
       "pending": [],
@@ -982,58 +989,22 @@
   },
   "lastEvents": [
     {
-      "book": "short",
-      "type": "buy",
-      "code": "2618",
-      "name": "長榮航",
-      "price": 47,
-      "shares": 2127,
-      "date": "2026-11-25"
-    },
-    {
-      "book": "short",
-      "type": "buy",
-      "code": "3023",
-      "name": "信邦",
-      "price": 276,
-      "shares": 362,
-      "date": "2026-11-25"
-    },
-    {
-      "book": "short",
-      "type": "buy",
-      "code": "1229",
-      "name": "聯華",
-      "price": 40.1,
-      "shares": 2493,
-      "date": "2026-11-25"
-    },
-    {
       "book": "mid",
       "type": "buy",
-      "code": "1808",
-      "name": "潤隆",
-      "price": 34.5,
-      "shares": 2898,
-      "date": "2026-11-25"
-    },
-    {
-      "book": "mid",
-      "type": "buy",
-      "code": "2636",
-      "name": "台驊控股",
-      "price": 69.4,
-      "shares": 1440,
-      "date": "2026-11-25"
+      "code": "1210",
+      "name": "大成",
+      "price": 52,
+      "shares": 1923,
+      "date": "2026-11-26"
     },
     {
       "book": "short",
       "type": "sell",
-      "code": "5388",
-      "name": "中磊",
-      "price": 65.8,
-      "pnl": -7612,
-      "reason": "停損"
+      "code": "6782",
+      "name": "視陽",
+      "price": 310.5,
+      "pnl": 8880,
+      "reason": "停利"
     }
   ],
   "equity": [
@@ -1180,6 +1151,12 @@
       "short": -12.7,
       "mid": -12.54,
       "bench": -16.5
+    },
+    {
+      "date": "2026-11-26",
+      "short": -11.86,
+      "mid": -11.25,
+      "bench": -14.15
     }
   ],
   "openEvents": {
