@@ -1,6 +1,6 @@
 {
   "startDate": "2026-10-21",
-  "lastDate": "2026-11-26",
+  "lastDate": "2026-11-27",
   "benchmark": {
     "code": "0050",
     "startClose": 108.15
@@ -59,7 +59,13 @@
           "source": "official"
         }
       ],
-      "pending": [],
+      "pending": [
+        {
+          "code": "2385",
+          "name": "群光",
+          "signalDate": "2026-11-27"
+        }
+      ],
       "closed": [
         {
           "code": "2324",
@@ -987,26 +993,7 @@
       ]
     }
   },
-  "lastEvents": [
-    {
-      "book": "mid",
-      "type": "buy",
-      "code": "1210",
-      "name": "大成",
-      "price": 52,
-      "shares": 1923,
-      "date": "2026-11-26"
-    },
-    {
-      "book": "short",
-      "type": "sell",
-      "code": "6782",
-      "name": "視陽",
-      "price": 310.5,
-      "pnl": 8880,
-      "reason": "停利"
-    }
-  ],
+  "lastEvents": [],
   "equity": [
     {
       "date": "2026-10-21",
@@ -1157,6 +1144,12 @@
       "short": -11.86,
       "mid": -11.25,
       "bench": -14.15
+    },
+    {
+      "date": "2026-11-27",
+      "short": -11.53,
+      "mid": -11.51,
+      "bench": -14.56
     }
   ],
   "openEvents": {
